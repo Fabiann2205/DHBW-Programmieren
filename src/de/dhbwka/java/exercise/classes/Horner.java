@@ -1,7 +1,7 @@
 package de.dhbwka.java.exercise.classes;
 
 public class Horner {
-    double[] werte;
+    private double[] werte;
 
 
     public Horner(double[] werte) {
@@ -40,10 +40,10 @@ public class Horner {
     }
     
     public static void main(String[] args) {
-        double[] testwerte = {11.0,7.0,-5.0,-4.0,2.0};
+        double[] testwerte = {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0};
         Horner test = new Horner(testwerte);
 
         System.out.println(test.toString());
-        System.out.println(test.getValue(2));
+        System.out.println(test.getValue(1));
     }
 }
