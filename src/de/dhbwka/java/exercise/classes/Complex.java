@@ -79,11 +79,11 @@ public class Complex {
     }
 
     public static void main (String[] args) {
-        Complex test = new Complex(5.037,8.190);
+        Complex test = new Complex(2,2);
         System.out.println(test.add(test).toString());
         System.out.println(test.sub(test).toString());
         System.out.println(test.mult(test).toString());
-        System.out.println(test.div(test).toString());
+        System.out.println(test.div(new Complex(3,3)).toString());
         System.out.println(test.getMagnitude());
         System.out.println(test.isLess(new Complex(8.571,9.513)));
 

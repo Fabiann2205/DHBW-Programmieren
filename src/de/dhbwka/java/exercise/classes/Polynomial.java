@@ -101,7 +101,7 @@ public class Polynomial {
         return ergebnisse;
     }
     public static void main(String[] args) {
-        Polynomial krank = new Polynomial(3, 9, 6);
+        Polynomial krank = new Polynomial(0,1,1);
         double[] haha = new double[2];
         haha = krank.getNullstellen();
         for (int i = 0; i < haha.length; i++) {
