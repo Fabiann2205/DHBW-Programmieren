@@ -97,7 +97,7 @@ public class MasterMind {
                             break;
                         }
                     }
-                } //ABCDE FADDB
+                } //ABCDE FADDB fails
             }
         }
         for (int f = 0; f<notUsed.length; f++) {
