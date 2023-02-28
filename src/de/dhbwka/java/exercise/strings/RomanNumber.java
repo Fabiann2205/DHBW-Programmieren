@@ -19,10 +19,10 @@ public class RomanNumber {
                     decimalNumber += 500;
                     break;
                 case 'C':
-                    if (romanNumber.charAt(i+1)== 'D') {
+                    if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'D') {
                         decimalNumber += (500-100);
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'M') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'M') {
                         decimalNumber += (1000-100);
                         i+=1;
                     } else {
@@ -33,16 +33,16 @@ public class RomanNumber {
                     decimalNumber += 50;
                     break;
                 case 'X':
-                    if (romanNumber.charAt(i+1)== 'D') {
+                    if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'D') {
                         decimalNumber += (500-10);
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'M') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'M') {
                         decimalNumber += (1000-10); 
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'C') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'C') {
                         decimalNumber += (100-10);
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'L') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'L') {
                         decimalNumber += (50-10);
                         i+=1; 
                     } else {
@@ -53,19 +53,22 @@ public class RomanNumber {
                     decimalNumber += 5;
                     break;
                 case 'I':
-                    if (romanNumber.charAt(i+1)== 'D') {
+                    if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'D') {
                         decimalNumber += (500-1);
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'M') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'M') {
                         decimalNumber += (1000-1); 
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'C') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'C') {
                         decimalNumber += (100-1);
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'L') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'L') {
                         decimalNumber += (50-1); 
                         i+=1;
-                    } else if (romanNumber.charAt(i+1)== 'V') {
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'X') {
+                        decimalNumber += (10-1); 
+                        i+=1;
+                    } else if (romanNumber.length() >=i+2 && romanNumber.charAt(i+1)== 'V') {
                         decimalNumber += (5-1); 
                         i+=1;
                     } else {
