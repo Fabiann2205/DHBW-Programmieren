@@ -146,7 +146,7 @@ public class Lotto {
         if (gezogeneKugeln[0] != 0 && tipp[0]!= 0) {
             rueckgabe += "\nRichtige: "+this.richtige();
         }
-        return rueckgabe; //Ausgabe gestalten
+        return rueckgabe;
     }
     
     public static void main(String[] args) {
