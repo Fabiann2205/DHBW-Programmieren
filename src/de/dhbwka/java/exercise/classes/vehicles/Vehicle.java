@@ -1,12 +1,12 @@
 package de.dhbwka.java.exercise.classes.vehicles;
 
 public class Vehicle {
-    private int tires;
-    private double vMax, position, speed; //position in km
+    private int tires = 0;
+    private double vMax = 0.0d, position, speed; //position in km
 
     public Vehicle() {
-        this.tires = 0;
-        this.vMax = 0;
+        //this.tires = 0;
+        //this.vMax = 0;
         //this.position = 0;
         //this.speed = 0;
     }
@@ -49,7 +49,7 @@ public class Vehicle {
 
     public void drive(double minutes) {
         if (speed != 0) {
-            this.position += minutes * (this.speed / 60);
+            this.position += minutes * (this.speed / 60.0d);
         }
     }
 
