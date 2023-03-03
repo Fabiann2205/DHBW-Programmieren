@@ -1,6 +1,9 @@
 package de.dhbwka.java.exercise.classes.vehicles;
 
 public class Bicycle extends Vehicle {
-    private int tires = 2;
-    private double vMax = 30.0d;
+    public Bicycle(double speed) {
+        super(speed);
+        tires = 2;
+        vMax = 30.0d;
+    }
 }

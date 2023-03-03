@@ -1,14 +1,14 @@
 package de.dhbwka.java.exercise.classes.vehicles;
 
 public class Vehicle {
-    private int tires = 0;
-    private double vMax = 0.0d, position, speed; //position in km
+    protected int tires;
+    protected double vMax, position, speed; //position in km
 
-    public Vehicle() {
-        //this.tires = 0;
-        //this.vMax = 0;
-        //this.position = 0;
-        //this.speed = 0;
+    public Vehicle(double speed) {
+        this.tires = 0;
+        this.vMax = 0;
+        this.position = 0;
+        this.speed = speed;
     }
 
     public double getSpeed() {
@@ -56,12 +56,11 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "{" +
-            " tires='" + getTires() + "'" +
-            ", vMax='" + getVMax() + "'" +
-            ", position='" + getPosition() + "'" +
-            ", speed='" + getSpeed() + "'" +
-            "}";
+        return (this.getClass().getSimpleName()
+        + " at position " + this.getPosition()
+        + " km with " + this.getTires()
+        + " wheels at speed " + this.getSpeed()
+        + " km/h of max. " + this.getVMax() + " km/h.");
     }
 
     
