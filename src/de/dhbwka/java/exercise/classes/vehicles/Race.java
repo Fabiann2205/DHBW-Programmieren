@@ -18,5 +18,12 @@ public class Race {
         for (int i = 0; i < vehicles.length; i++) { 
             System.out.println(vehicles[i].toString());
         }
+
+        System.out.println(vehicles[0].hashCode());
+        System.out.println(vehicles[1].hashCode());
+        System.out.println(vehicles[2].hashCode());
+        System.out.println(vehicles[3].hashCode());
+        System.out.println(vehicles[0].equals(vehicles[0]));
+        
     }
 }

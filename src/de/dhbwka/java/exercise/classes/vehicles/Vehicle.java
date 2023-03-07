@@ -1,6 +1,8 @@
 package de.dhbwka.java.exercise.classes.vehicles;
 
-public class Vehicle {
+import java.util.Objects;
+
+public class Vehicle{
     protected int tires;
     protected double vMax, position, speed; //position in km
 
@@ -62,6 +64,24 @@ public class Vehicle {
         + " wheels at speed " + this.getSpeed()
         + " km/h of max. " + this.getVMax() + " km/h.");
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Vehicle)) {
+            return false;
+        }
+        Vehicle vehicle = (Vehicle) o;
+        return tires == vehicle.tires && vMax == vehicle.vMax && position == vehicle.position && speed == vehicle.speed;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tires, vMax, position, speed);
+    }
+
 
     
 }
