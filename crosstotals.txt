@@ -2,3 +2,6 @@ Quersumme von 100 ist 1
 Quersumme von 88 ist 16
 Quersumme von 234324144 ist 27
 Quersumme von 99999999 ist 72
+otto
+toot
+kaak
