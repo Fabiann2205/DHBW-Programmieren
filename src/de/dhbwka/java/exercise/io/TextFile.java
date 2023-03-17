@@ -46,8 +46,9 @@ public class TextFile {
 
     public void write() {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(z))){
-            for(int i = 0; i < lines.size(); i++)
-            out.write(lines.get(i)); 
+            for(int i = 0; i < lines.size(); i++) {
+                out.write(lines.get(i) + "\n"); 
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +73,7 @@ public class TextFile {
         if (i<1 || i>lines.size()) {
             throw new LineNumberOutOfBoundsException();
         }
-        lines.set(i, s);
+        lines.set((i-1), s);
     }
 
     public void replaceAll(String regexp, String ersatz) {
