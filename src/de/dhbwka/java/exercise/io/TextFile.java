@@ -84,6 +84,25 @@ public class TextFile {
         }
     }
 
+    public Boolean isInFile(String was) {
+        Boolean gefunden = false;
+        for(int i=1; i<=this.availableLines(); i++) {
+            try {
+                if(this.getLine(i).equals(was)) {
+                    gefunden = true;
+                    break;
+                }
+            } catch (LineNumberOutOfBoundsException e) {
+                return false;
+            }
+        }
+        if (gefunden) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public void close() {
         this.write();
         z = null;

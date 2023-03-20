@@ -10,23 +10,26 @@ public class PrimesTest {
         input.close();
         try {
             TextFile datei = new TextFile("primes.txt");
-            Boolean gefunden = false;
-            for(int i=1; i<=datei.availableLines(); i++) {
-                if(datei.getLine(i).equals(String.valueOf(zahl))) {
-                    gefunden = true;
-                    break;
-                }
-            }
-            datei.close();
-            if (gefunden) {
+            if (datei.isInFile(String.valueOf(zahl))) {
                 System.out.println(zahl + " ist eine Primzahl!");
             } else {
                 System.out.println(zahl + " ist keine Primzahl!");
             }
+            datei.close();
         } catch (IOErrorInFile e) {
             e.printStackTrace();
-        } catch (LineNumberOutOfBoundsException e) {
-            e.printStackTrace();
-        }
+        } 
+        
     }
+
+
+
 }
+
+// Boolean gefunden = false;
+//             for(int i=1; i<=datei.availableLines(); i++) {
+//                 if(datei.getLine(i).equals(String.valueOf(zahl))) {
+//                     gefunden = true;
+//                     break;
+//                 }
+//             }
