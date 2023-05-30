@@ -9,7 +9,7 @@ public class CurrencyCalculator {
         frame = new JFrame();
         frame.setLayout(new BorderLayout(5, 5));
 
-        frame.add(new JTextField("Please enter a amount to convert!"), BorderLayout.NORTH);
+        frame.add(new JTextField("Please enter amount to convert!"), BorderLayout.NORTH);
         
         JPanel unteresPanel = new JPanel();
         unteresPanel.add(new JButton("EUR > USD"));
