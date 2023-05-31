@@ -2,12 +2,12 @@ package de.dhbwka.java.exercise.io;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
+// import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextFile {
-    private List<String> lines = new ArrayList<>();
+    private ArrayList<String> lines = new ArrayList<>();
     File z;
     public TextFile(File f) throws IOErrorInFile {
         z = f;
@@ -58,8 +58,8 @@ public class TextFile {
         return lines.size();
     }
 
-    public String[] getLines() {
-        return (String[]) lines.toArray();
+    public ArrayList<String> getLines() {
+        return lines;
     }
 
     public String getLine(int i) throws LineNumberOutOfBoundsException {
