@@ -1,23 +1,19 @@
 package de.dhbwka.java.exercise.ui.editor;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-
 import de.dhbwka.java.exercise.io.IOErrorInFile;
 import de.dhbwka.java.exercise.io.LineNumberOutOfBoundsException;
 import de.dhbwka.java.exercise.io.TextFile;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import java.io.File;
+import java.util.ArrayList;
+
 public class EditorSimple {
     JFrame frame;
     JTextPane editPane;
-    int i;
     TextFile datei1;
-    String[] text;
+
     public EditorSimple() {
         frame = new JFrame();
 
@@ -26,85 +22,65 @@ public class EditorSimple {
         JMenu bearbeiten = new JMenu("Bearbeiten");
         JMenu sendenan = new JMenu("Senden an");
         JMenuItem item1 = new JMenuItem("Neu");
-        item1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editPane.setText("");
-            }
-            
-        });
+        item1.addActionListener(e -> editPane.setText(""));
         JMenuItem item2 = new JMenuItem("Mail");
         JMenuItem item3 = new JMenuItem("WhatsApp");
         JMenuItem item4 = new JMenuItem("Öffnen");
-        item4.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fc = new JFileChooser();
-                fc.setFileFilter(new FileFilter() {
-                    @Override
-                    public boolean accept(File f) {
-                        return f.isDirectory() || f.getName().toLowerCase().endsWith(".txt");
-                    }
-                    @Override
-                    public String getDescription() {
-                        return "Text Files";
-                    }
-                });
-                int state = fc.showOpenDialog(null);
-                if (state == JFileChooser.APPROVE_OPTION){ 
-                    System.out.println(fc.getSelectedFile().getAbsolutePath());
-                    try {
-                        datei1 = new TextFile(fc.getSelectedFile().getAbsolutePath());
-                    } catch (IOErrorInFile e1) {
-                        e1.printStackTrace();
-                    }
-                    try {
-                        datei1.read();
-                    } catch (IOErrorInFile e1) {
-                        e1.printStackTrace();
-                    }
-                    String test = "";
-                    ArrayList<String> array = datei1.getLines();
-                    for ( String s : array) {
-                        test += (s + "\n");
-                    }
-                    editPane.setText(test);
-                } else {
-                    System.out.println("No selection");
+        item4.addActionListener(e -> {
+            JFileChooser fc = new JFileChooser();
+            fc.setFileFilter(new FileFilter() {
+                @Override
+                public boolean accept(File f) {
+                    return f.isDirectory() || f.getName().toLowerCase().endsWith(".txt");
                 }
-            }
-            
-        });
-        JMenuItem item5 = new JMenuItem("Schließen");
-        item5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editPane.setText("");
-                datei1.close();
-            }
-            
-        });
-        JMenuItem item6 = new JMenuItem("Speichern");
-        item6.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for(int h = 1; h <= datei1.availableLines(); h++) {
-                    try {
-                        datei1.setLine(h, "");
-                    } catch (LineNumberOutOfBoundsException e1) {
-                        e1.printStackTrace();
-                    }
+                @Override
+                public String getDescription() {
+                    return "Text Files";
+                }
+            });
+            int state = fc.showOpenDialog(null);
+            if (state == JFileChooser.APPROVE_OPTION){
+                System.out.println(fc.getSelectedFile().getAbsolutePath());
+                try {
+                    datei1 = new TextFile(fc.getSelectedFile().getAbsolutePath());
+                } catch (IOErrorInFile e1) {
+                    e1.printStackTrace();
                 }
                 try {
-                    datei1.setLine(1, editPane.getText());
+                    datei1.read();
+                } catch (IOErrorInFile e1) {
+                    e1.printStackTrace();
+                }
+                StringBuilder test = new StringBuilder();
+                ArrayList<String> array = datei1.getLines();
+                for ( String s : array) {
+                    test.append(s).append("\n");
+                }
+                editPane.setText(test.toString());
+            } else {
+                System.out.println("No selection");
+            }
+        });
+        JMenuItem item5 = new JMenuItem("Schließen");
+        item5.addActionListener(e -> {
+            editPane.setText("");
+            datei1.close();
+        });
+        JMenuItem item6 = new JMenuItem("Speichern");
+        item6.addActionListener(e -> {
+            for(int h = 1; h <= datei1.availableLines(); h++) {
+                try {
+                    datei1.setLine(h, "");
                 } catch (LineNumberOutOfBoundsException e1) {
                     e1.printStackTrace();
                 }
-                datei1.write();
             }
-            
+            try {
+                datei1.setLine(1, editPane.getText());
+            } catch (LineNumberOutOfBoundsException e1) {
+                e1.printStackTrace();
+            }
+            datei1.write();
         });
         JMenuItem item7 = new JMenuItem("Rückgängig");
         JMenuItem item8 = new JMenuItem("Wiederholen");
@@ -141,3 +117,6 @@ public class EditorSimple {
         new EditorSimple();
     }
 }
+
+
+
