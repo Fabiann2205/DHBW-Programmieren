@@ -26,36 +26,6 @@ public class Election extends JComponent {
             g.setColor(fontColor[i]);
             g.drawString(parteien[i] + " - " + ergebnisse[i] + "%", widthPerElement*i+widthPerElement/2-40,height-15);
         }
-/*
-        g.setColor(Color.black);
-        g.fillRect(0,0,widthPerElement,(int) height);
-        g.setColor(Color.white);
-        g.drawString("Union - " + ergebnisse[0] + "%", widthPerElement/2-40,height-15);
-        g.setColor(Color.red);
-        g.fillRect(widthPerElement,height-(int) (height/ergebnisse[0]*ergebnisse[1]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[1]));
-        g.setColor(Color.white);
-        g.drawString("SPD - " + ergebnisse[1] + "%", widthPerElement+widthPerElement/2-40,height-15);
-        g.setColor(Color.blue);
-        g.fillRect(widthPerElement*2,height-(int) (height/ergebnisse[0]*ergebnisse[2]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[2]));
-        g.setColor(Color.white);
-        g.drawString("AFD - " + ergebnisse[2] + "%", widthPerElement*2+widthPerElement/2-40,height-15);
-        g.setColor(Color.yellow);
-        g.fillRect(widthPerElement*3,height-(int) (height/ergebnisse[0]*ergebnisse[3]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[3]));
-        g.setColor(Color.black);
-        g.drawString("FDP - " + ergebnisse[3] + "%", widthPerElement*3+widthPerElement/2-40,height-15);
-        g.setColor(Color.pink);
-        g.fillRect(widthPerElement*4,height-(int) (height/ergebnisse[0]*ergebnisse[4]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[4]));
-        g.setColor(Color.black);
-        g.drawString("Linke - " + ergebnisse[4] + "%", widthPerElement*4+widthPerElement/2-40,height-15);
-        g.setColor(Color.green);
-        g.fillRect(widthPerElement*5,height-(int) (height/ergebnisse[0]*ergebnisse[5]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[5]));
-        g.setColor(Color.black);
-        g.drawString("Grüne - " + ergebnisse[5] + "%", widthPerElement*5+widthPerElement/2-40,height-15);
-        g.setColor(Color.gray);
-        g.fillRect(widthPerElement*6,height-(int) (height/ergebnisse[0]*ergebnisse[6]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[6]));
-        g.setColor(Color.white);
-        g.drawString("Andere - " + ergebnisse[6] + "%", widthPerElement*6+widthPerElement/2-40,height-15);
-*/
     }
 
     public static void main(String[] args) {
