@@ -13,18 +13,39 @@ public class Election extends JComponent {
 
         int width = getWidth();
         int height = getHeight();
-        int widthPerElement = width/7;
+        int widthPerElement = width/ergebnisse.length;
 
 
+        // erste Partei ganz links
         g.setColor(colors[0]);
         g.fillRect(0,0,widthPerElement,height);
         g.setColor(fontColor[0]);
         g.drawString(parteien[0] + " - " + ergebnisse[0] + "%", widthPerElement/2-40,height-15);
-        for (int i = 1; i<7; i++) {
-            g.setColor(colors[i]);
+
+
+        String parteiname;
+        Color colorname;
+        Color fontcolorname;
+        for (int i = 1; i<ergebnisse.length; i++) {
+            try{
+                parteiname = parteien[i];
+            } catch(Exception e) {
+                parteiname = "undefined";
+            }
+            try{
+                colorname = colors[i];
+            } catch(Exception e) {
+                colorname = Color.BLACK;
+            }
+            try{
+                fontcolorname = fontColor[i];
+            } catch(Exception e) {
+                fontcolorname = Color.white;
+            }
+            g.setColor(colorname);
             g.fillRect(widthPerElement*i,height-(int) (height/ergebnisse[0]*ergebnisse[i]),widthPerElement,(int) (height/ergebnisse[0]*ergebnisse[i]));
-            g.setColor(fontColor[i]);
-            g.drawString(parteien[i] + " - " + ergebnisse[i] + "%", widthPerElement*i+widthPerElement/2-40,height-15);
+            g.setColor(fontcolorname);
+            g.drawString(parteiname + " - " + ergebnisse[i] + "%", widthPerElement*i+widthPerElement/2-40,height-15);
         }
     }
 
