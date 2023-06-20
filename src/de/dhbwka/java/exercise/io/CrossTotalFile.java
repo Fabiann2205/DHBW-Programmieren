@@ -19,7 +19,7 @@ public class CrossTotalFile {
             sInt /= 10;
         }
      
-        File output = new File("crosstotals.txt");
+        File output = new File("resources/crosstotals.txt");
         try {
             output.createNewFile();
         } catch (IOException e) {
@@ -28,7 +28,7 @@ public class CrossTotalFile {
 
         System.out.println("Quersumme: " + sum);
 
-        try ( Writer fWriter = new FileWriter("crosstotals.txt", true) ) {
+        try ( Writer fWriter = new FileWriter("resources/crosstotals.txt", true) ) {
             fWriter.write("Quersumme von "+s+ " ist "+sum+"\n");
         } catch (IOException ex) {
             ex.printStackTrace();

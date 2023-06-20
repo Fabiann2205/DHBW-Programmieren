@@ -9,7 +9,7 @@ public class PrimesTest {
         int zahl = input.nextInt();
         input.close();
         try {
-            TextFile datei = new TextFile("primes.txt");
+            TextFile datei = new TextFile("resources/primes.txt");
             if (datei.isInFile(String.valueOf(zahl))) {
                 System.out.println(zahl + " ist eine Primzahl!");
             } else {

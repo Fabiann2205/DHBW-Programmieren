@@ -5,7 +5,7 @@ import java.io.*;
 public class TextfileLines {
     public static void main (String[] args) {
         String ausgabeganz = "";
-        try (BufferedReader br =new BufferedReader(new FileReader("beispiel.txt"))){
+        try (BufferedReader br =new BufferedReader(new FileReader("resources/beispiel.txt"))){
             int i = 1;
             while (br.ready()) {
                 String line = br.readLine();

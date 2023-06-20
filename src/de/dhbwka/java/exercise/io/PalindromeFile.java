@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 public class PalindromeFile {
     public static void main(String[] args) {
-        Boolean run = true;
+        boolean run = true;
         Scanner eingabe = new Scanner(System.in);
-        File apt = new File("palindrome.txt");
+        File apt = new File("resources/palindrome.txt");
         try {
             apt.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (Writer fWriter = new FileWriter("palindrome.txt", true)) {
+        try (Writer fWriter = new FileWriter("resources/palindrome.txt", true)) {
             while(run) {
                 System.out.print("Bitte Wort eingeben: ");
                 String s = eingabe.next();

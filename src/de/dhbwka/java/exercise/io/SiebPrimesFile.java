@@ -63,7 +63,7 @@ public class SiebPrimesFile {
 
         //print the number of primes and all primes and to a file
         System.out.printf("Es gibt %d Primzahlen im Bereich von 2 bis %d: %n", primesx, n);
-        try (BufferedWriter out = new BufferedWriter(new FileWriter("primes.txt"))){
+        try (BufferedWriter out = new BufferedWriter(new FileWriter("resources/primes.txt"))){
             for(x=0; x < primesx; x++) {
                 System.out.printf("%d\n", primes[x]);
                 out.write(primes[x] + "\n"); 

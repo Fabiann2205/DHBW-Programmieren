@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 public class BinaryNumber implements ActionListener {
     JFrame frame;
-    ImageIcon imgOff = new ImageIcon("off.png");
-    ImageIcon imgOn = new ImageIcon("on.png");
+    ImageIcon imgOff = new ImageIcon("resources/off.png");
+    ImageIcon imgOn = new ImageIcon("resources/on.png");
     JToggleButton sieben;
     JToggleButton sechs;
     JToggleButton fuenf;

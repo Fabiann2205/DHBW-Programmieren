@@ -4,7 +4,7 @@ public class TextFileTest {
     public static void main(String[] args) {
         TextFile eins;
         try {
-            eins = new TextFile("bla.txt");
+            eins = new TextFile("resources/bla.txt");
             try {
                 System.out.println(eins.getLine(16));
                 eins.setLine(16, "tschau");

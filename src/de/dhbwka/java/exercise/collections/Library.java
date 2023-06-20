@@ -44,7 +44,7 @@ public class Library {
         frame.add(saveEntry, BorderLayout.CENTER);
         saveEntry.addActionListener(e -> {
             textBibliothek.add(this.titlefield.getText()+ ";"+this.authorfield.getText()+ ";"+this.yearfield.getText()+ ";"+this.publisherfield.getText());
-            this.saveFile("bibliothek.txt", textBibliothek);
+            this.saveFile("resources/bibliothek.txt", textBibliothek);
         });
 
         JPanel bottomPanel = new JPanel();
@@ -74,7 +74,7 @@ public class Library {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        textBibliothek = this.readFile("bibliothek.txt");
+        textBibliothek = this.readFile("resources/bibliothek.txt");
 
     }
     public List<String> readFile(String file) {
