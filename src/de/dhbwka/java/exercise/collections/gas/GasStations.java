@@ -7,10 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class GasStations {
-    private final JTextField stationNameInput;
-    private final JTextField dieselInput;
-    private final JTextField superE5Input;
-    private final JTextField superE10Input;
+    private final JTextField stationNameInput, dieselInput, superE5Input, superE10Input;
     private final Map<String, GasPrices> gasStationsMap = new HashMap<>();
     public GasStations() {
         //ui
