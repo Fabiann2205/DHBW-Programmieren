@@ -1,8 +1,9 @@
-eins;autorvoneins;1954;publishervoneins
-zwei;autorvonzwei;1999;publishervonzwei
-test;eintestautor;1999;testpublisher
-drei;autorvondrei;2000;publishervondrei
 Title;Author;2000;Publisher
 Title;Author;2100;Publisher
 Title;Author;2190;Publisher
 Birne1;Nils Schlingemann;2004;Angela S
+drei;autorvondrei;2000;publishervondrei
+eins;autorvoneins;1954;publishervoneins
+zwei;autorvonzwei;1999;publishervonzwei
+test;eintestautor;1999;testpublisher
+Title;Author;2022;Publisher
