@@ -2,13 +2,13 @@ package de.dhbwka.java.exercise.collections.gas;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class GasStations {
     private final JTextField stationNameInput, dieselInput, superE5Input, superE10Input;
-    private final Map<String, GasPrices> gasStationsMap = new HashMap<>();
+    private final Map<String, GasPrices> gasStationsMap = new TreeMap<>();
     public GasStations() {
         //ui
         JFrame frame = new JFrame();
