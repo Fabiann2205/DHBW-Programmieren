@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+    <Document>
+        <Placemark>
+            <name>Point 0</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.203798,48.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 1</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.703798,48.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 2</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.203798,48.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 3</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.703798,48.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 4</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>11.203798,48.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 5</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.203798,47.254155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 6</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.703798,47.254155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 7</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.203798,47.254155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 8</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.703798,47.254155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 9</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>11.203798,47.254155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 10</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.203798,46.004155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 11</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.703798,46.004155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 12</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.203798,46.004155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 13</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.703798,46.004155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 14</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>11.203798,46.004155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 15</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.203798,44.754155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 16</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.703798,44.754155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 17</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.203798,44.754155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 18</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.703798,44.754155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 19</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>11.203798,44.754155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 20</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.203798,43.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 21</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>9.703798,43.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 22</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.203798,43.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 23</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>10.703798,43.504155</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Point 24</name>
+            <description>Hier ist ein Punkt.</description>
+            <Point>
+                <coordinates>11.203798,43.504155</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>
