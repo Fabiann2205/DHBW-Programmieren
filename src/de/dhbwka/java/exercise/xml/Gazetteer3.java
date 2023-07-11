@@ -1,6 +1,5 @@
 package de.dhbwka.java.exercise.xml;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,7 +12,6 @@ import org.xml.sax.SAXException;
 
 public class Gazetteer3 {
     public static void main(String[] args) {
-        String address = "karlsruhe"; // Ihre Suchadresse hier eintragen
         String url = "https://www.iai.kit.edu/javavl/data/static/karlsruhe.xml";
 
         try {
