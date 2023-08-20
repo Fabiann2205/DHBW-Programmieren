@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class nimmspiel {
     private int haufen1, haufen2, maxSteineProHaufen;
     private String spieler1, spieler2, nächsterSpieler;
+    public Scanner eingabe = new Scanner(System.in);
 
     public nimmspiel(int maxSteineProHaufen, String spieler1, String spieler2) {
         this.maxSteineProHaufen = maxSteineProHaufen;
@@ -65,7 +66,6 @@ public class nimmspiel {
     }
 
     public void nächsterZug() {
-        Scanner eingabe = new Scanner(System.in);
         int haufen = 0, haufen1;
         while(haufen != 1 && haufen != 2 || haufen == 1 && this.getHaufen1()<1 || haufen == 2 && this.getHaufen2()<1) {
             System.out.print("Spieler " + this.getNächsterSpieler() + ": Von welchem Haufen ziehen Sie Steine? (1/2) ");
@@ -126,6 +126,8 @@ public class nimmspiel {
             erstesGame.nächsterZug();
             System.out.println("\n" + erstesGame.toString());
         }
+        input.close();
+        erstesGame.eingabe.close();
     }
 
 }

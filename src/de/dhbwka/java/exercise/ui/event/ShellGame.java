@@ -30,5 +30,6 @@ public class ShellGame {
                 }
             }
         }
+        input.close();
     }
 }

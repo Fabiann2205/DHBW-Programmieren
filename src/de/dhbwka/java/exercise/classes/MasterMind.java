@@ -134,7 +134,7 @@ public class MasterMind {
         } else {
             System.out.println("Leider nicht geschafft (mehr als 20 Züge)!");
         }
-        
+        input.close();
 
 
     } 

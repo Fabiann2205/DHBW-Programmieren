@@ -47,7 +47,7 @@ public class Player {
         if (!((this.getRemainingPoints()-visit.getValue()) < 0)) {
             if ((this.getRemainingPoints()-visit.getValue() != 1)) {
                 //Teilaufgabe g: 2. Bedingung
-                if ((this.getRemainingPoints()-visit.getValue() == 0 && visit.getLastField().isDoubleField())||(this.getRemainingPoints()-visit.getValue()>1)) {
+                if (((this.getRemainingPoints()-visit.getValue() == 0 && visit.getLastField().isDoubleField()))||(this.getRemainingPoints()-visit.getValue()>1)) {
                     this.visits1.add(visit);
                     return true;
                 } else {

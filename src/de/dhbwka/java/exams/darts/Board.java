@@ -15,11 +15,11 @@ public class Board {
         }
         //Doppelzahlenwerte
         for(int i=23; i<43; i++) {
-            fields[i] = new Field(("D" + String.valueOf(i-22)), (i-22)*2, false);
+            fields[i] = new Field(("D" + String.valueOf(i-22)), (i-22)*2, true);
         }
         //Triplezahlenwerte
         for(int i=43; i<63; i++) {
-            fields[i] = new Field(("T" + String.valueOf(i-42)), (i-42)*3, false);
+            fields[i] = new Field(("T" + String.valueOf(i-42)), (i-42)*3, true);
         }
     }
 
