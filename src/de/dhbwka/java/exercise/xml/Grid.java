@@ -87,6 +87,6 @@ public class Grid {
 
         List<double[]> points = calculatePoints(swLat, swLong, neLat, neLong);
 
-        createKMLFile(points, "grid.kml");
+        createKMLFile(points, "resources/grid.kml");
     }
 }
