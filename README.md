@@ -1,6 +1,8 @@
 ## DHBW-Programmieren
 
-Dateien zur DHBW Vorlesung Programmieren
+Files for the DHBW Vorlesung Programmieren
+
+Save all created files and used resources in the /resources folder.
 
 ## Folder Structure
 
