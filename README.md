@@ -4,6 +4,8 @@ Files for the DHBW Vorlesung Programmieren
 
 Save all created files and used resources in the /resources folder.
 
+Dieses Repository hat keinen Anspruch auf Vollständigkeit noch auf absolute Korrektheit.
+
 ## Folder Structure
 
 The workspace contains two folders by default, where:
