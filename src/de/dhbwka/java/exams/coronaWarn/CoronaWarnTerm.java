@@ -14,6 +14,7 @@ public class CoronaWarnTerm implements CoronaWarnClient{
         this.phone = phone;
     }
 
+
     @Override
     public Token getCurrentToken() {
         return null;
