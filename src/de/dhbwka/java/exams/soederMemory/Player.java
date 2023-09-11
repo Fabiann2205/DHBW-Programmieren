@@ -1,14 +1,14 @@
 package de.dhbwka.java.exams.soederMemory;
 
 public class Player {
-    private String name;
+    private final String name;
     private int points;
     private PlayerStatus status;
 
-    public Player(String name, int points, PlayerStatus status) {
+    public Player(String name) {
         this.name = name;
-        this.points = points;
-        this.status = status;
+        this.points = 0;
+        this.status = PlayerStatus.WAITING;
     }
 
     public String getName() {
@@ -21,5 +21,13 @@ public class Player {
 
     public PlayerStatus getStatus() {
         return status;
+    }
+
+    public void addPoint() {
+        this.points++;
+    }
+
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
     }
 }
