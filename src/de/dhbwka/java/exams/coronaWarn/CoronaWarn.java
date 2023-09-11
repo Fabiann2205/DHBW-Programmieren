@@ -1,7 +1,9 @@
 package de.dhbwka.java.exams.coronaWarn;
 
+import de.ownclasses.TextFileNew;
+import de.ownclasses.exceptions.IOErrorInFile;
+
 import javax.swing.*;
-import java.io.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,10 +45,7 @@ public class CoronaWarn {
      *           phone to clear store for
      */
     public static void clearTokenStore( JPhone phone ) {
-        File file = new File( "resources/" + phone.getId() + "-tokens.txt" );
-        if ( file.exists() ) {
-            file.delete();
-        }
+        new TextFileNew("resources/" + phone.getId() + "-tokens.txt").deleteFile();
     }
 
     /**
@@ -58,17 +57,15 @@ public class CoronaWarn {
      * @return loaded tokens
      */
     public static List<Token> loadTokens( JPhone phone ) {
-        String filename = "resources/" + phone.getId() + "-tokens.txt";
         List<Token> tokens = new LinkedList<>();
-        File f = new File( filename );
-        if ( f.exists() ) {
-            try ( BufferedReader br = new BufferedReader( new FileReader( filename ) ) ) {
-                String line;
-                while ( (line = br.readLine()) != null ) {
-                    tokens.add( CoronaWarn.parseToken( line ) );
-                }
-            } catch ( Exception e ) {
-            }
+        List<String> data;
+        try {
+            data = new TextFileNew("resources/" + phone.getId() + "-tokens.txt").getAllLines();
+        } catch (IOErrorInFile e) {
+            throw new RuntimeException(e);
+        }
+        for(String line : data) {
+            tokens.add( CoronaWarn.parseToken( line ) );
         }
         return tokens;
     }
@@ -82,17 +79,8 @@ public class CoronaWarn {
      *           token to save
      */
     public static void saveToken( JPhone phone, Token token ) {
-        String filename = "resources/" + phone.getId() + "-tokens.txt";
         String line = token.getValue() + ";" + token.getDate().getTime();
-
-        try ( BufferedWriter bw =
-                      new BufferedWriter( new FileWriter( filename, true ) ) ) {
-            bw.write( line );
-            bw.newLine();
-        } catch ( Exception e ) {
-            JOptionPane.showMessageDialog( null, e.getMessage(), "Error",
-                    JOptionPane.ERROR_MESSAGE );
-        }
+        new TextFileNew("resources/" + phone.getId() + "-tokens.txt").addLine(line);
     }
 
     /**
