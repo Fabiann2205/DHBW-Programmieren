@@ -1,18 +1,10 @@
 package de.dhbwka.java.exams.coronaWarn;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import javax.swing.*;
+import java.io.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-
-import de.dhbwka.java.exams.coronaWarn.CoronaWarnAPI;
 
 public class CoronaWarn {
 
@@ -51,7 +43,7 @@ public class CoronaWarn {
      *           phone to clear store for
      */
     public static void clearTokenStore( JPhone phone ) {
-        File file = new File( phone.getId() + "-tokens.txt" );
+        File file = new File( "resources/" + phone.getId() + "-tokens.txt" );
         if ( file.exists() ) {
             file.delete();
         }
@@ -66,12 +58,11 @@ public class CoronaWarn {
      * @return loaded tokens
      */
     public static List<Token> loadTokens( JPhone phone ) {
-        String filename = phone.getId() + "-tokens.txt";
+        String filename = "resources/" + phone.getId() + "-tokens.txt";
         List<Token> tokens = new LinkedList<>();
         File f = new File( filename );
         if ( f.exists() ) {
-            try ( BufferedReader br =
-                          new BufferedReader( new FileReader( filename ) ) ) {
+            try ( BufferedReader br = new BufferedReader( new FileReader( filename ) ) ) {
                 String line;
                 while ( (line = br.readLine()) != null ) {
                     tokens.add( CoronaWarn.parseToken( line ) );
@@ -91,7 +82,7 @@ public class CoronaWarn {
      *           token to save
      */
     public static void saveToken( JPhone phone, Token token ) {
-        String filename = phone.getId() + "-tokens.txt";
+        String filename = "resources/" + phone.getId() + "-tokens.txt";
         String line = token.getValue() + ";" + token.getDate().getTime();
 
         try ( BufferedWriter bw =

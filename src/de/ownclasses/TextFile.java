@@ -1,13 +1,13 @@
 package de.ownclasses;
 
+import de.ownclasses.exceptions.IOErrorInFile;
+import de.ownclasses.exceptions.LineNumberOutOfBoundsException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import de.ownclasses.exceptions.IOErrorInFile;
-import de.ownclasses.exceptions.LineNumberOutOfBoundsException;
 
 public class TextFile {
     private List<String> lines = new ArrayList<>();
@@ -18,7 +18,7 @@ public class TextFile {
             z.createNewFile();
             System.out.println("created" + z.getAbsolutePath());
         } catch (Exception e) {
-            System.out.println("Error crewting file");
+            System.out.println("Error creating file");
         }
         try ( BufferedReader br = new BufferedReader(new FileReader(f)) ) {
             while (br.ready()) {
@@ -62,7 +62,7 @@ public class TextFile {
     public void write() {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(z))){
             for(int i = 0; i < lines.size(); i++) {
-                out.write(lines.get(i) + "\n"); 
+                out.write(lines.get(i) + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class TextFile {
     }
 
     public String[] getLines() {
-        return (String[]) lines.toArray();
+        return lines.toArray(new String[0]);
     }
 
     public String getLine(int i) throws LineNumberOutOfBoundsException {
