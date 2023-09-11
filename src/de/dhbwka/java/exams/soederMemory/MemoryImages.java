@@ -1,12 +1,13 @@
+package de.dhbwka.java.exams.soederMemory;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 /**
  * <p>

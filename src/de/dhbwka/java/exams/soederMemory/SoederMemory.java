@@ -1,8 +1,9 @@
+package de.dhbwka.java.exams.soederMemory;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import javax.swing.UIManager;
 
 /**
  * Memory with images of Markus S&ouml;der
