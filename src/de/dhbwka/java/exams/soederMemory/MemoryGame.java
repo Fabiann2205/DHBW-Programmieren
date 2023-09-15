@@ -30,7 +30,7 @@ public class MemoryGame {
             if (images.size() < (((rows * cols)-1) / 2)) {
                 throw new MemoryException("Too few images available");
             } else {
-                this.images = getRandomImages(images, (rows*cols)); // vl eins weniger???
+                this.images = getRandomImages(images, ((rows*cols)-1)); // vl eins weniger???
             }
         }
         this.currentPlayer = this.players.get(0);
@@ -54,7 +54,7 @@ public class MemoryGame {
         }
 
         for (Integer a : generated) {
-            randomImages.add(allImages.get(a));
+            randomImages.add(allImages.get(a-1));
         }
         return randomImages;
     }
@@ -77,5 +77,21 @@ public class MemoryGame {
             this.currentPlayerId++;
         }
         this.currentPlayer.setStatus(PlayerStatus.ACTIVE);
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<MemoryImages.MemoryImage> getImages() {
+        return images;
     }
 }
