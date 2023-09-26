@@ -1,18 +1,18 @@
 package de.dhbwka.java.exercise.ui;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-
 public class TextfileViewer {
-    String dateiname;
-    int breite, hoehe;
+    final String dateiname;
+    final int breite;
+    final int hoehe;
 
-    JFrame frame; 
+    final JFrame frame;
+
     public TextfileViewer(String dateiname, int breite, int hoehe) {
         this.dateiname = dateiname;
         this.breite = breite;
@@ -23,12 +23,8 @@ public class TextfileViewer {
         JTextArea textArea = new JTextArea();
         try {
             textArea.read(new FileReader(this.dateiname), "hallo");
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (NumberFormatException | IOException e) {
+            System.err.println("Error" + e);
         }
         JScrollPane scrollPane = new JScrollPane(textArea);
 
@@ -42,20 +38,20 @@ public class TextfileViewer {
 
     public static void main(String[] args) {
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileFilter() { 
+        fc.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
                 return f.isDirectory() || f.getName().toLowerCase().endsWith(".txt");
             }
-            
+
             @Override
             public String getDescription() {
                 return "Text Files";
-            } 
+            }
         });
         int state = fc.showOpenDialog(null);
 
-        if (state == JFileChooser.APPROVE_OPTION){ 
+        if (state == JFileChooser.APPROVE_OPTION) {
             System.out.println(fc.getSelectedFile().getAbsolutePath());
             new TextfileViewer(fc.getSelectedFile().getAbsolutePath(), 1000, 500);
         } else {

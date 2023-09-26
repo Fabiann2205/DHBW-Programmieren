@@ -1,13 +1,11 @@
 package de.dhbwka.java.exercise.ui.event;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
+import java.awt.*;
 
 public class BMICalculator {
-    JFrame frame;
+    final JFrame frame;
+
     public BMICalculator() {
         frame = new JFrame();
         frame.setLayout(new BorderLayout(5, 5));
@@ -45,41 +43,39 @@ public class BMICalculator {
         // Mitte Calculate Button
         JPanel mid = new JPanel();
         JButton calculate = new JButton("Calculate");
-        calculate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    bmi.setText(String.valueOf(Double.parseDouble(gewicht.getText()) / (Double.parseDouble(groesse.getText()) * Double.parseDouble(groesse.getText()))));
-                    if (male.isSelected()) {
-                        if(Double.parseDouble(bmi.getText()) < 20.0d) {
-                            normalweight.setText("Short weight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 25.0d) {
-                            normalweight.setText("Normal weight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 30.0d) {
-                            normalweight.setText("Overweight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 40.0d) {
-                            normalweight.setText("Adiposity");
-                        } else if(Double.parseDouble(bmi.getText()) > 40.0d) {
-                            normalweight.setText("Massive Adiposity");
-                        }
-                    } else if (female.isSelected()) {
-                        if(Double.parseDouble(bmi.getText()) < 19.0d) {
-                            normalweight.setText("Short weight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 24.0d) {
-                            normalweight.setText("Normal weight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 30.0d) {
-                            normalweight.setText("Overweight");
-                        } else if(Double.parseDouble(bmi.getText()) <= 40.0d) {
-                            normalweight.setText("Adiposity");
-                        } else if(Double.parseDouble(bmi.getText()) > 40.0d) {
-                            normalweight.setText("Massive Adiposity");
-                        }
+        calculate.addActionListener(e -> {
+            try {
+                bmi.setText(String.valueOf(Double.parseDouble(gewicht.getText()) / (Double.parseDouble(groesse.getText()) * Double.parseDouble(groesse.getText()))));
+                if (male.isSelected()) {
+                    if (Double.parseDouble(bmi.getText()) < 20.0d) {
+                        normalweight.setText("Short weight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 25.0d) {
+                        normalweight.setText("Normal weight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 30.0d) {
+                        normalweight.setText("Overweight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 40.0d) {
+                        normalweight.setText("Adiposity");
+                    } else if (Double.parseDouble(bmi.getText()) > 40.0d) {
+                        normalweight.setText("Massive Adiposity");
                     }
-                } catch (Exception f) {
-                    gewicht.setText("Kein gültiger Wert!!!");
-                    groesse.setText("Kein gültiger Wert!!!");
-                    bmi.setText("Kein gültiger Wert!!!");
-                    normalweight.setText("Kein gültiger Wert!!!");
+                } else if (female.isSelected()) {
+                    if (Double.parseDouble(bmi.getText()) < 19.0d) {
+                        normalweight.setText("Short weight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 24.0d) {
+                        normalweight.setText("Normal weight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 30.0d) {
+                        normalweight.setText("Overweight");
+                    } else if (Double.parseDouble(bmi.getText()) <= 40.0d) {
+                        normalweight.setText("Adiposity");
+                    } else if (Double.parseDouble(bmi.getText()) > 40.0d) {
+                        normalweight.setText("Massive Adiposity");
+                    }
                 }
+            } catch (Exception f) {
+                gewicht.setText("Kein gültiger Wert!!!");
+                groesse.setText("Kein gültiger Wert!!!");
+                bmi.setText("Kein gültiger Wert!!!");
+                normalweight.setText("Kein gültiger Wert!!!");
             }
         });
         mid.add(calculate);
@@ -94,7 +90,7 @@ public class BMICalculator {
         bot.add(normalweightLabel);
         bot.add(normalweight);
         frame.add(bot, BorderLayout.SOUTH);
-        
+
 
         frame.pack();
         frame.setTitle("Currency converter");

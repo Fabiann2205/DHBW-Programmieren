@@ -1,4 +1,5 @@
 package de.dhbwka.java.exercise.classes;
+
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -6,10 +7,9 @@ public class MasterMind {
     private char[] gegeben = new char[5];
     private int versuch, anzahlVersuche = 20;
     private String[] historie = new String[anzahlVersuche];
-    private char[] buchstaben = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
     private int richtigeStelle = 0, falscheStelle = 0, indexHistorie = 0;
-    private Boolean[] notUsed = {true, true, true, true, true};
-    private Boolean[] notUsedInner = {true, true, true, true, true};
+    private final Boolean[] notUsed = {true, true, true, true, true};
+    private final Boolean[] notUsedInner = {true, true, true, true, true};
 
     //setter and getter
     public char[] getGegeben() {
@@ -53,8 +53,9 @@ public class MasterMind {
     }
 
     //constructor
-    public MasterMind() {;
-        for(int i=0; i<gegeben.length; i++) {
+    public MasterMind() {
+        for (int i = 0; i < gegeben.length; i++) {
+            char[] buchstaben = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
             gegeben[i] = buchstaben[ThreadLocalRandom.current().nextInt(0, 7)];
         }
     }
@@ -62,26 +63,26 @@ public class MasterMind {
 
     @Override
     public String toString() {
-        String rueckgabe = "Solution: " ;
-        for (int j = 0; j<gegeben.length; j++) {
-            rueckgabe += gegeben[j];
+        StringBuilder rueckgabe = new StringBuilder("Solution: ");
+        for (char c : gegeben) {
+            rueckgabe.append(c);
         }
-        
-        rueckgabe += "\n" +indexHistorie + " bisherige(r) Versuch(e):\n";
-        for (int i = 0; i < historie.length; i++) {
-            if(historie[i] != null) {
-                rueckgabe += historie[i] + "\n";
+
+        rueckgabe.append("\n").append(indexHistorie).append(" bisherige(r) Versuch(e):\n");
+        for (String s : historie) {
+            if (s != null) {
+                rueckgabe.append(s).append("\n");
             }
         }
-        return rueckgabe;
+        return rueckgabe.toString();
 
     }
 
     //raten
     public Boolean raten(String rate) {
-        for(int i = 0; i<gegeben.length; i++) {
+        for (int i = 0; i < gegeben.length; i++) {
             if (notUsed[i]) {
-                for(int j = 0; j<5; j++) {
+                for (int j = 0; j < 5; j++) {
                     if (notUsedInner[j]) {
                         if ((rate.charAt(j) == gegeben[i]) && (j == i) || gegeben[j] == rate.charAt(j)) {
                             richtigeStelle += 1;
@@ -100,10 +101,10 @@ public class MasterMind {
                 } //ABCDE FADDB fails
             }
         }
-        for (int f = 0; f<notUsed.length; f++) {
+        for (int f = 0; f < notUsed.length; f++) {
             notUsed[f] = true;
             notUsedInner[f] = true;
-        };
+        }
 
         historie[indexHistorie] = rate + " " + richtigeStelle + "  " + falscheStelle;
         indexHistorie++;
@@ -122,8 +123,8 @@ public class MasterMind {
         Scanner input = new Scanner(System.in);
         System.out.print("\nGeben Sie ihren Tipp ab: (5 Zeichen) ");
         String zumRaten = input.next();
-        while(einGame.raten(zumRaten)) {
-            System.out.print(einGame.toString());
+        while (einGame.raten(zumRaten)) {
+            System.out.print(einGame);
             System.out.print("\nGeben Sie ihren Tipp ab: ");
             zumRaten = input.next();
         }
@@ -137,6 +138,6 @@ public class MasterMind {
         input.close();
 
 
-    } 
-    
+    }
+
 }

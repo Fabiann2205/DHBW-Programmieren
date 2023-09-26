@@ -1,15 +1,16 @@
 package de.dhbwka.java.exams.darts;
 
+import de.ownclasses.TextFile;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import de.ownclasses.TextFile;
 
 // Teilaufgabe e
 public class Game {
     // one Leg
-    Player[] players;
-    Board board;
+    final Player[] players;
+    final Board board;
 
     public Game(Board board, Player[] players) {
         this.players = players;
@@ -17,7 +18,7 @@ public class Game {
     }
 
     public void start() {
-        Boolean run = true;
+        boolean run = true;
         Scanner input = new Scanner(System.in);
         String eingabe;
         // Field[] getroffene;
@@ -42,31 +43,31 @@ public class Game {
                 points += getroffene.get(i).getValue();
             }
             if (getroffene.size() == 2) {
-                getroffene.add(this.board.parseField(String.valueOf("x")));
+                getroffene.add(this.board.parseField("x"));
             } else if (getroffene.size() == 1) {
-                getroffene.add(this.board.parseField(String.valueOf("x")));
-                getroffene.add(this.board.parseField(String.valueOf("x")));
-            } else if (getroffene.size() == 0) {
-                getroffene.add(this.board.parseField(String.valueOf("x")));
-                getroffene.add(this.board.parseField(String.valueOf("x")));
-                getroffene.add(this.board.parseField(String.valueOf("x")));
+                getroffene.add(this.board.parseField("x"));
+                getroffene.add(this.board.parseField("x"));
+            } else if (getroffene.isEmpty()) {
+                getroffene.add(this.board.parseField("x"));
+                getroffene.add(this.board.parseField("x"));
+                getroffene.add(this.board.parseField("x"));
             }
 
             // neuen Visit erstellen
             // arraylist konvertiert nicht richtig
-            if (players[player].addVisit(new Visit(getroffene.toArray(new Field[getroffene.size()])))) {
+            if (players[player].addVisit(new Visit(getroffene.toArray(new Field[0])))) {
                 System.out.println("Erfolgreich hinzugefügt!");
             } else {
                 System.out.println("Überworfen!");
             }
             System.out.println("Scored: " + points + "\n-----------------------------------");
             // spiel beenden
-            for (int i = 0; i < players.length; i++) {
-                if (players[i].getRemainingPoints() == 0) {
+            for (Player value : players) {
+                if (value.getRemainingPoints() == 0) {
                     run = false;
                     System.out.println("Game shot and the leg, " + players[player].getName() + "!");
                 }
-                if (players[i].getVisits().length >= 10) {
+                if (value.getVisits().length >= 10) {
                     run = false;
                     System.out.println("You are too bad for this game!");
                 }
@@ -94,7 +95,7 @@ public class Game {
     public static void main(String[] args) {
         final Board b = new Board();
 
-        final Player[] players = new Player[] { new Player("Michael van Gerwen"), new Player("Rob Cross")
+        final Player[] players = new Player[]{new Player("Michael van Gerwen"), new Player("Rob Cross")
         };
 
         final Game g = new Game(b, players);

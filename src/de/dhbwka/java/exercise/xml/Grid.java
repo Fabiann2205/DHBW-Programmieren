@@ -13,7 +13,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Grid {
     private static List<double[]> calculatePoints(double swLat, double swLong, double neLat, double neLong) {
@@ -41,13 +42,13 @@ public class Grid {
         DocumentBuilder parser = factory.newDocumentBuilder();
         Document doc = parser.newDocument();
 
-        Element kml = doc.createElementNS("http://earth.google.com/kml/2.2", "kml");
+        Element kml = doc.createElementNS("https://earth.google.com/kml/2.2", "kml");
         Element docuElement = doc.createElement("Document");
 
         for (double[] point : points) {
             Element placeMark = doc.createElement("Placemark");
             Element name = doc.createElement("name");
-            name.appendChild(doc.createTextNode("Point "+ points.indexOf(point)));
+            name.appendChild(doc.createTextNode("Point " + points.indexOf(point)));
             Element description = doc.createElement("description");
             description.appendChild(doc.createTextNode("Hier ist ein Punkt."));
             Element pointElement = doc.createElement("Point");

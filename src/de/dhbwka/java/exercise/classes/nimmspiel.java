@@ -1,4 +1,5 @@
 package de.dhbwka.java.exercise.classes;
+
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -6,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class nimmspiel {
     private int haufen1, haufen2, maxSteineProHaufen;
     private String spieler1, spieler2, nächsterSpieler;
-    public Scanner eingabe = new Scanner(System.in);
+    public final Scanner eingabe = new Scanner(System.in);
 
     public nimmspiel(int maxSteineProHaufen, String spieler1, String spieler2) {
         this.maxSteineProHaufen = maxSteineProHaufen;
@@ -67,7 +68,7 @@ public class nimmspiel {
 
     public void nächsterZug() {
         int haufen = 0, haufen1;
-        while(haufen != 1 && haufen != 2 || haufen == 1 && this.getHaufen1()<1 || haufen == 2 && this.getHaufen2()<1) {
+        while (haufen != 1 && haufen != 2 || haufen == 1 && this.getHaufen1() < 1 || haufen == 2 && this.getHaufen2() < 1) {
             System.out.print("Spieler " + this.getNächsterSpieler() + ": Von welchem Haufen ziehen Sie Steine? (1/2) ");
             haufen = eingabe.nextInt();
         }
@@ -77,26 +78,26 @@ public class nimmspiel {
         } else {
             haufen1 = this.getHaufen2();
         }
-        while(anzahl<=0 || anzahl > haufen1) {
+        while (anzahl <= 0 || anzahl > haufen1) {
             System.out.print("Spieler " + this.getNächsterSpieler() + ": Wieviele Kugeln ziehen Sie? ");
             anzahl = eingabe.nextInt();
         }
         // eingabe.close();
 
-        if(haufen == 1) {
-            this.setHaufen1(this.getHaufen1()-anzahl);
+        if (haufen == 1) {
+            this.setHaufen1(this.getHaufen1() - anzahl);
         } else {
-            this.setHaufen2(this.getHaufen2()-anzahl);
+            this.setHaufen2(this.getHaufen2() - anzahl);
         }
-        if (nächsterSpieler.toString() == spieler1.toString()) {
+        if (nächsterSpieler == spieler1) {
             nächsterSpieler = spieler2;
         } else {
             nächsterSpieler = spieler1;
-        } 
+        }
     }
 
     public Boolean winner() {
-        if (this.getHaufen1()== 0 && this.getHaufen2() == 0) {
+        if (this.getHaufen1() == 0 && this.getHaufen2() == 0) {
             System.out.println("Spiel beendet.");
             if (this.getNächsterSpieler() == this.getSpieler1()) {
                 System.out.println("Gewonnen hat Spieler " + this.getSpieler2());
@@ -108,11 +109,11 @@ public class nimmspiel {
             return true;
         }
     }
-    
+
     @Override
     public String toString() {
-        return "Spieler: " + this.getSpieler1() + ", " + this.getSpieler2() + 
-        ", Haufen 1: " + this.getHaufen1() + " Steine, Haufen 2: " + this.getHaufen2() + " Steine";
+        return "Spieler: " + this.getSpieler1() + ", " + this.getSpieler2() +
+                ", Haufen 1: " + this.getHaufen1() + " Steine, Haufen 2: " + this.getHaufen2() + " Steine";
     }
 
     public static void main(String[] args) {
@@ -121,10 +122,10 @@ public class nimmspiel {
         nimmspiel erstesGame = new nimmspiel(input.nextInt(), input.next(), input.next());
         input.nextLine();
         // input.close();
-        System.out.println(erstesGame.toString());
-        while(erstesGame.winner()) {
+        System.out.println(erstesGame);
+        while (erstesGame.winner()) {
             erstesGame.nächsterZug();
-            System.out.println("\n" + erstesGame.toString());
+            System.out.println("\n" + erstesGame);
         }
         input.close();
         erstesGame.eingabe.close();

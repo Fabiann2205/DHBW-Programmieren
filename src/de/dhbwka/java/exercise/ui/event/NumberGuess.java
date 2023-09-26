@@ -1,4 +1,5 @@
 package de.dhbwka.java.exercise.ui.event;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,18 +8,19 @@ import java.nio.channels.UnsupportedAddressTypeException;
 import java.util.Random;
 
 public class NumberGuess implements ActionListener {
-    JFrame frame;
+    final JFrame frame;
     int zumraten;
-    JButton newgame;
-    JButton ok;
-    JButton bestplayer;
-    JButton exit;
-    Random random = new Random();
-    JLabel ergebnis;
+    final JButton newgame;
+    final JButton ok;
+    final JButton bestplayer;
+    final JButton exit;
+    final Random random = new Random();
+    final JLabel ergebnis;
     int versuche = 0;
-    JTextField playernamefield;
-    JTextField numberfield;
+    final JTextField playernamefield;
+    final JTextField numberfield;
     Boolean fertig = false;
+
     public NumberGuess() {
         frame = new JFrame();
         frame.setLayout(new BorderLayout(5, 5));
@@ -65,12 +67,10 @@ public class NumberGuess implements ActionListener {
         frame.setVisible(true);
     }
 
-    
 
     public static void main(String[] args) {
         new NumberGuess();
     }
-
 
 
     @Override
@@ -78,18 +78,18 @@ public class NumberGuess implements ActionListener {
         if (e.getSource() == newgame) {
             fertig = false;
             versuche = 0;
-            zumraten = (random.nextInt(1000)+1);
+            zumraten = (random.nextInt(1000) + 1);
             ergebnis.setText("Attempt 1: bitte eingeben und ok klicken");
             playernamefield.setEditable(false);
         } else if (e.getSource() == ok) {
             versuche++;
-            if (Integer.parseInt(numberfield.getText()) == zumraten && fertig == false) {
+            if (Integer.parseInt(numberfield.getText()) == zumraten && !fertig) {
                 ergebnis.setText("Attempt " + versuche + ": Richtig Spieler " + playernamefield.getText());
                 fertig = true;
                 playernamefield.setEditable(true);
-            } else if (Integer.parseInt(numberfield.getText()) <= zumraten && fertig == false) {
+            } else if (Integer.parseInt(numberfield.getText()) <= zumraten && !fertig) {
                 ergebnis.setText("Attempt " + versuche + ": zu niedrig Spieler " + playernamefield.getText());
-            } else if (Integer.parseInt(numberfield.getText()) >= zumraten && fertig == false) {
+            } else if (Integer.parseInt(numberfield.getText()) >= zumraten && !fertig) {
                 ergebnis.setText("Attempt " + versuche + ": zu groß Spieler " + playernamefield.getText());
             } else {
                 ergebnis.setText("Starte ein neues game!!!");

@@ -1,51 +1,51 @@
 package de.dhbwka.java.exercise.classes.periodic;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PeriodicTable {
-    private List<Element> arrlist = new ArrayList<Element>();
+    private final List<Element> arrlist = new ArrayList<>();
 
     public void addElement(Element e) {
         boolean add = true;
-        for(int i=0; i<arrlist.size(); i++) {
-            if((arrlist.get(i).equals(e))) {
+        for (Element element : arrlist) {
+            if ((element.equals(e))) {
                 add = false;
+                break;
             }
         }
         if (add) {
             arrlist.add(e);
         }
-        
+
     }
 
     public boolean hasElement(int o) {
-        for(int i=0; i<arrlist.size(); i++) {
-            if((arrlist.get(i).getOrd() == o)) {
+        for (Element element : arrlist) {
+            if ((element.getOrd() == o)) {
                 return true;
-            } 
+            }
         }
         return false;
     }
 
     public Element getElement(int o) {
-        for(int i=0; i<arrlist.size(); i++) {
-            if((arrlist.get(i).getOrd() == o)) {
-                return arrlist.get(i);
+        for (Element element : arrlist) {
+            if ((element.getOrd() == o)) {
+                return element;
             }
         }
         return null;
     }
 
     public Element[] getMetals() {
-        List<Metal> arrlistausgabe = new ArrayList<Metal>();
-        for(int i=0; i<arrlist.size(); i++) {
-            if(arrlist.get(i) instanceof Metal) {                   // instanceof!!!!
-                Metal tester = (Metal) (arrlist.get(i));
+        List<Metal> arrlistausgabe = new ArrayList<>();
+        for (Element element : arrlist) {
+            if (element instanceof Metal tester) {                   // instanceof!!!!
                 arrlistausgabe.add(tester);
             }
         }
-        Element[] a = arrlistausgabe.toArray(new Element[0]);
-        return a;
+        return arrlistausgabe.toArray(new Element[0]);
     }
 
     public static void main(String[] args) {
@@ -63,8 +63,8 @@ public class PeriodicTable {
 
         System.out.println(table.getElement(2));
 
-        for (int i = 0; i<metalle.length; i++) {
-            System.out.println(metalle[i].toString());
+        for (Element element : metalle) {
+            System.out.println(element.toString());
         }
     }
 }

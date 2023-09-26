@@ -1,7 +1,5 @@
 package de.dhbwka.java.exercise.classes;
 
-import java.lang.Math;
-
 public class Polynomial {
     private int a, b, c;
 
@@ -84,33 +82,35 @@ public class Polynomial {
     }
 
     public Polynomial addPolynomial(Polynomial polynom) {
-        return new Polynomial((this.getA()+polynom.getA()),(this.getB()+polynom.getB()),(this.getC()+polynom.getC()));
+        return new Polynomial((this.getA() + polynom.getA()), (this.getB() + polynom.getB()), (this.getC() + polynom.getC()));
     }
 
     public Polynomial subtractPolynomial(Polynomial polynom) {
-        return new Polynomial((this.getA()-polynom.getA()),(this.getB()-polynom.getB()),(this.getC()-polynom.getC()));
+        return new Polynomial((this.getA() - polynom.getA()), (this.getB() - polynom.getB()), (this.getC() - polynom.getC()));
     }
+
     //Rückgabe eines Arrays: 0 x^4 bis 4 kein x
     public int[] multiplicatePolynomial(Polynomial polynom) {
         int[] ergebnisse = new int[5];
-        ergebnisse[0] = (this.getA()*polynom.getA());
-        ergebnisse[1] = ((this.getA()*polynom.getB())+(this.getB()*polynom.getA()));
-        ergebnisse[2] = ((this.getA()*polynom.getC())+(this.getB()*polynom.getB())+(this.getC()*polynom.getA()));
-        ergebnisse[3] = ((this.getB()*polynom.getC())+(this.getC()*polynom.getB()));
-        ergebnisse[4] = (this.getC()*polynom.getC());
+        ergebnisse[0] = (this.getA() * polynom.getA());
+        ergebnisse[1] = ((this.getA() * polynom.getB()) + (this.getB() * polynom.getA()));
+        ergebnisse[2] = ((this.getA() * polynom.getC()) + (this.getB() * polynom.getB()) + (this.getC() * polynom.getA()));
+        ergebnisse[3] = ((this.getB() * polynom.getC()) + (this.getC() * polynom.getB()));
+        ergebnisse[4] = (this.getC() * polynom.getC());
         return ergebnisse;
     }
+
     public static void main(String[] args) {
-        Polynomial krank = new Polynomial(0,1,1);
+        Polynomial krank = new Polynomial(0, 1, 1);
         double[] haha = new double[2];
         haha = krank.getNullstellen();
-        for (int i = 0; i < haha.length; i++) {
-            System.out.println(haha[i]);
+        for (double v : haha) {
+            System.out.println(v);
         }
-        Polynomial krank2 = new Polynomial(3,9,6);
+        Polynomial krank2 = new Polynomial(3, 9, 6);
         int[] test = krank.multiplicatePolynomial(krank2);
-        for (int i = 0; i < test.length; i++) {
-            System.out.println(test[i]);
+        for (int j : test) {
+            System.out.println(j);
         }
     } // 2 nullstellen :3,9,6; 1 nullstelle:1,4,4; keine nullstelle: 2,3,30
 

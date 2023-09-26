@@ -73,7 +73,7 @@ public class Account {
     public String einzahlung(double amount) {
         String meldung;
         if (amount > 0.0d) {
-            this.setKontostand(this.getKontostand()+amount);;
+            this.setKontostand(this.getKontostand() + amount);
             meldung = "success";
         } else {
             meldung = "failed";
@@ -85,7 +85,7 @@ public class Account {
         String meldung;
 
         if (this.kontostand + this.limit >= amount & amount > 0.0d) {
-            this.setKontostand(this.getKontostand()-amount);;
+            this.setKontostand(this.getKontostand() - amount);
             meldung = "success";
         } else if (amount <= 0.0d) {
             meldung = "Keine Auszahlung unter oder gleich 0";
@@ -99,18 +99,18 @@ public class Account {
 
     public static void main(String[] args) {
         Account konto = new Account(859467986, "hallo", "NACHnaME", 1000, 1000);
-        System.out.println(konto.toString());
+        System.out.println(konto);
         System.out.println(konto.einzahlung(1000));
-        System.out.println(konto.toString());
+        System.out.println(konto);
         // 2000
         System.out.println(konto.auszahlung(1500));
-        System.out.println(konto.toString());
+        System.out.println(konto);
         // 500
         System.out.println(konto.auszahlung(1000));
-        System.out.println(konto.toString());
+        System.out.println(konto);
         // -500
         System.out.println(konto.auszahlung(1500));
-        System.out.println(konto.toString());
+        System.out.println(konto);
         // zu wenig
 
     }

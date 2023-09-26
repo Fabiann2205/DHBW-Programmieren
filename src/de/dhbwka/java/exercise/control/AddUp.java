@@ -7,10 +7,10 @@ public class AddUp {
         Scanner eingabe = new Scanner(System.in);
         double wert = 0.0d;
         double ergebnis = 0.0d;
-        while(wert>=0.0) {
+        while (wert >= 0.0) {
             ergebnis += wert;
             System.out.print("Zahl eingeben (<0 für Abbruch): ");
-            wert = (double) eingabe.nextDouble();
+            wert = eingabe.nextDouble();
         }
         eingabe.close();
         System.out.println("Summe: " + ergebnis);

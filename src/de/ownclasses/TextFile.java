@@ -6,12 +6,12 @@ import de.ownclasses.exceptions.LineNumberOutOfBoundsException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextFile {
     private List<String> lines = new ArrayList<>();
     File z;
+
     public TextFile(File f) {
         z = f;
         try {
@@ -20,7 +20,7 @@ public class TextFile {
         } catch (Exception e) {
             System.out.println("Error creating file");
         }
-        try ( BufferedReader br = new BufferedReader(new FileReader(f)) ) {
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             while (br.ready()) {
                 String line = br.readLine();
                 lines.add(line);
@@ -29,15 +29,15 @@ public class TextFile {
             System.out.println("Error");
         }
     }
+
     public TextFile(String f) {
         z = new File(f);
         try {
             z.createNewFile();
-        } 
-        catch (Exception e) {
-             System.err.println("Error creating File");
+        } catch (Exception e) {
+            System.err.println("Error creating File");
         }
-        try ( BufferedReader br = new BufferedReader(new FileReader(f)) ) {
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             while (br.ready()) {
                 String line = br.readLine();
                 lines.add(line);
@@ -49,7 +49,7 @@ public class TextFile {
 
     public void read() throws IOErrorInFile {
         lines = new ArrayList<>();
-        try ( BufferedReader br = new BufferedReader(new FileReader(z)) ) {
+        try (BufferedReader br = new BufferedReader(new FileReader(z))) {
             while (br.ready()) {
                 String line = br.readLine();
                 lines.add(line);
@@ -60,12 +60,12 @@ public class TextFile {
     }
 
     public void write() {
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(z))){
-            for(int i = 0; i < lines.size(); i++) {
-                out.write(lines.get(i) + "\n");
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(z))) {
+            for (String line : lines) {
+                out.write(line + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error" + e);
         }
     }
 
@@ -78,25 +78,22 @@ public class TextFile {
     }
 
     public String getLine(int i) throws LineNumberOutOfBoundsException {
-        if (i<1 || i>lines.size()) {
+        if (i < 1 || i > lines.size()) {
             throw new LineNumberOutOfBoundsException();
         }
-        return lines.get(i-1);
+        return lines.get(i - 1);
     }
 
     public void setLine(int i, String s) throws LineNumberOutOfBoundsException {
-        if (i<1 || i>lines.size()) {
+        if (i < 1 || i > lines.size()) {
             throw new LineNumberOutOfBoundsException();
         }
-        lines.set((i-1), s);
+        lines.set((i - 1), s);
     }
 
     public void replaceAll(String regexp, String ersatz) {
         Pattern p = Pattern.compile(regexp);
-        for (int loopIndex2 = 0; loopIndex2 < lines.size(); loopIndex2++) {
-            Matcher matcher = p.matcher(lines.get(loopIndex2));
-            lines.set(loopIndex2, matcher.replaceAll(ersatz));
-        }
+        lines.replaceAll(input -> p.matcher(input).replaceAll(ersatz));
     }
 
     public void addLine(String text) {
@@ -104,10 +101,10 @@ public class TextFile {
     }
 
     public void removeLine(int index) throws LineNumberOutOfBoundsException {
-        if (index<1 || index>lines.size()) {
+        if (index < 1 || index > lines.size()) {
             throw new LineNumberOutOfBoundsException();
         }
-        this.lines.remove(index-1);
+        this.lines.remove(index - 1);
     }
 
     public void clear() {
@@ -118,12 +115,12 @@ public class TextFile {
         this.z.delete();
         this.close();
     }
-    
+
     public Boolean isInFile(String was) {
-        Boolean gefunden = false;
-        for(int i=1; i<=this.availableLines(); i++) {
+        boolean gefunden = false;
+        for (int i = 1; i <= this.availableLines(); i++) {
             try {
-                if(this.getLine(i).equals(was)) {
+                if (this.getLine(i).equals(was)) {
                     gefunden = true;
                     break;
                 }
@@ -131,19 +128,15 @@ public class TextFile {
                 return false;
             }
         }
-        if (gefunden) {
-            return true;
-        } else {
-            return false;
-        }
+        return gefunden;
     }
 
     public void close() {
         // if because of delete method
-        if (z != null ) {
+        if (z != null) {
             if (z.exists()) {
                 this.write();
-            } 
+            }
         }
         z = null;
         lines = null;

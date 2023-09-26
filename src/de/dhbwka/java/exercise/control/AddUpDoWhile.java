@@ -10,9 +10,9 @@ public class AddUpDoWhile {
         do {
             ergebnis += wert;
             System.out.print("Zahl eingeben (<0 für Abbruch): ");
-            wert = (double) eingabe.nextDouble();
-        } while(wert>=0.0);
-            
+            wert = eingabe.nextDouble();
+        } while (wert >= 0.0);
+
         eingabe.close();
         System.out.println("Summe: " + ergebnis);
     }

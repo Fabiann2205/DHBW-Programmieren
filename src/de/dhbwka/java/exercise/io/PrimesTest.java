@@ -17,19 +17,7 @@ public class PrimesTest {
             }
             datei.close();
         } catch (IOErrorInFile e) {
-            e.printStackTrace();
-        } 
-        
+            System.err.println("Error" + e);
+        }
     }
-
-
-
 }
-
-// Boolean gefunden = false;
-//             for(int i=1; i<=datei.availableLines(); i++) {
-//                 if(datei.getLine(i).equals(String.valueOf(zahl))) {
-//                     gefunden = true;
-//                     break;
-//                 }
-//             }

@@ -3,9 +3,9 @@ package de.dhbwka.java.exams.darts;
 // Teilaufgabe a
 public class Field {
     //values
-    private String label;
-    private int value;
-    private boolean doubleField;
+    private final String label;
+    private final int value;
+    private final boolean doubleField;
 
     //konstruktoren
     public Field(String label, int value, boolean doubleField) {

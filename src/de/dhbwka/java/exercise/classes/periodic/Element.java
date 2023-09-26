@@ -1,6 +1,6 @@
 package de.dhbwka.java.exercise.classes.periodic;
 
-import java.util.*;
+import java.util.Objects;
 
 public class Element {
     private String name, symbol;
@@ -77,41 +77,28 @@ public class Element {
     @Override
     public String toString() {
         String type = (this.getGrouptype()) ? "Hauptgruppe" : "Nebengruppe";
-        String zustand = "fest";
-        switch (this.getPhase()) {
-            case 1: 
-                zustand = "fest";
-                break;
-            case 2:
-                zustand = "flüssig";
-                break;
-            case 3:
-                zustand = "gasförmig";
-                break;
-            default:
-                zustand = "haha";
-                break;
-        }
-        return this.getName() + " (" + this.getSymbol() + "," + 
-            this.getOrd() + ") Schale: " + this.getShell() + ", " +
-            zustand + ", Gruppe: " + type;
+        String zustand = switch (this.getPhase()) {
+            case 1 -> "fest";
+            case 2 -> "flüssig";
+            case 3 -> "gasförmig";
+            default -> "haha";
+        };
+        return this.getName() + " (" + this.getSymbol() + "," +
+                this.getOrd() + ") Schale: " + this.getShell() + ", " +
+                zustand + ", Gruppe: " + type;
     }
 
 
     @Override
     public boolean equals(Object o) {
         Element test = (Element) o;
-        if (o.getClass().getSimpleName() == "Element" && this.getOrd() == test.getOrd()) {
-            return true;
-        } else {
-            return false;
-        }
+        return o.getClass().getSimpleName() == "Element" && this.getOrd() == test.getOrd();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, symbol, ord, shell, phase, grouptype);
     }
-    
+
 
 }

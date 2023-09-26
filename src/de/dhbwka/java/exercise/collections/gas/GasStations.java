@@ -9,6 +9,7 @@ import java.util.TreeMap;
 public class GasStations {
     private final JTextField stationNameInput, dieselInput, superE5Input, superE10Input;
     private final Map<String, GasPrices> gasStationsMap = new TreeMap<>();
+
     public GasStations() {
         //ui
         JFrame frame = new JFrame();
@@ -30,7 +31,35 @@ public class GasStations {
         frame.add(topPanel, BorderLayout.NORTH);
 
 
+        JPanel bottomPanel = getjPanel();
+        frame.add(bottomPanel, BorderLayout.SOUTH);
+
+        frame.pack();
+        frame.setTitle("Currency converter");
+        frame.setMinimumSize(new Dimension(400, 100));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
+    private JPanel getjPanel() {
         JPanel bottomPanel = new JPanel();
+        JButton saveButton = getjButton();
+
+
+        bottomPanel.add(saveButton);
+        JButton showAllButton = new JButton("Show all");
+        showAllButton.addActionListener(e -> {
+            StringBuilder concatter = new StringBuilder();
+            for (String name : gasStationsMap.keySet()) {
+                concatter.append(name).append(": ").append(gasStationsMap.get(name).toString()).append("\n");
+            }
+            JOptionPane.showMessageDialog(null, concatter.toString());
+        });
+        bottomPanel.add(showAllButton);
+        return bottomPanel;
+    }
+
+    private JButton getjButton() {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(e -> {
             if (Objects.equals(stationNameInput.getText(), "")) {
@@ -56,7 +85,7 @@ public class GasStations {
                 } catch (Exception f) {
                     superE10 = -1.0d;
                 }
-                gasStationsMap.put(stationNameInput.getText(), new GasPrices(diesel,superE5,superE10));
+                gasStationsMap.put(stationNameInput.getText(), new GasPrices(diesel, superE5, superE10));
                 JOptionPane.showMessageDialog(null, "Saved: " + stationNameInput.getText() + " - " + gasStationsMap.get(stationNameInput.getText()).toString());
                 stationNameInput.setText("");
                 dieselInput.setText("");
@@ -64,25 +93,7 @@ public class GasStations {
                 superE10Input.setText("");
             }
         });
-
-
-        bottomPanel.add(saveButton);
-        JButton showAllButton = new JButton("Show all");
-        showAllButton.addActionListener(e -> {
-            StringBuilder concatter = new StringBuilder();
-            for(String name : gasStationsMap.keySet()) {
-                concatter.append(name).append(": ").append(gasStationsMap.get(name).toString()).append("\n");
-            }
-            JOptionPane.showMessageDialog(null, concatter.toString());
-        });
-        bottomPanel.add(showAllButton);
-        frame.add(bottomPanel, BorderLayout.SOUTH);
-
-        frame.pack();
-        frame.setTitle("Currency converter");
-        frame.setMinimumSize(new Dimension(400, 100));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        return saveButton;
     }
 
     public static void main(String[] args) {

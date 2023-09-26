@@ -12,11 +12,11 @@ public class TextFileTest {
                 eins.write();
                 eins.close();
             } catch (LineNumberOutOfBoundsException e) {
-                e.printStackTrace();
+                System.err.println("Error" + e);
             }
         } catch (IOErrorInFile e) {
-            e.printStackTrace();
+            System.err.println("Error" + e);
         }
-        
+
     }
 }

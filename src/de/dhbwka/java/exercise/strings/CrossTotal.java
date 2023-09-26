@@ -8,7 +8,7 @@ public class CrossTotal {
         System.out.print("Bitte Zahl für Quersumme eingeben: ");
         String s = eingabe.next();
 
-        Integer sInt = Integer.valueOf(s);
+        int sInt = Integer.parseInt(s);
         // int i = Integer.parseInt(s);
         //Quersumme aus sInt berechnen
         int sum = 0;
@@ -16,11 +16,11 @@ public class CrossTotal {
             sum += sInt % 10;
             sInt /= 10;
         }
-     
+
 
         System.out.println("Quersumme: " + sum);
         eingabe.close();
-        
-        
+
+
     }
 }

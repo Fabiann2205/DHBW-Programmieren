@@ -1,21 +1,24 @@
 package de.dhbwka.java.exercise.ui.event;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
 public class BinaryNumber implements ActionListener {
-    JFrame frame;
-    ImageIcon imgOff = new ImageIcon("resources/off.png");
-    ImageIcon imgOn = new ImageIcon("resources/on.png");
-    JToggleButton sieben;
-    JToggleButton sechs;
-    JToggleButton fuenf;
-    JToggleButton vier;
-    JToggleButton drei;
-    JToggleButton zwei;
-    JToggleButton eins;
-    JLabel ergebnis1;
-    JToggleButton nul;
+    final JFrame frame;
+    final ImageIcon imgOff = new ImageIcon("resources/off.png");
+    final ImageIcon imgOn = new ImageIcon("resources/on.png");
+    final JToggleButton sieben;
+    final JToggleButton sechs;
+    final JToggleButton fuenf;
+    final JToggleButton vier;
+    final JToggleButton drei;
+    final JToggleButton zwei;
+    final JToggleButton eins;
+    final JLabel ergebnis1;
+    final JToggleButton nul;
+
     public BinaryNumber() {
         frame = new JFrame();
         //Top Buttons
@@ -63,24 +66,7 @@ public class BinaryNumber implements ActionListener {
         top.add(nul);
         frame.add(top, BorderLayout.NORTH);
         //Middle Labels
-        JPanel middle = new JPanel();
-        middle.setLayout(new GridLayout(1, 8, 2, 2));
-        JLabel label7 = new JLabel("2^7", SwingConstants.CENTER);
-        middle.add(label7);
-        JLabel label6 = new JLabel("2^6", SwingConstants.CENTER);
-        middle.add(label6);
-        JLabel label5 = new JLabel("2^5",SwingConstants.CENTER);
-        middle.add(label5);
-        JLabel label4 = new JLabel("2^4",SwingConstants.CENTER);
-        middle.add(label4);
-        JLabel label3 = new JLabel("2^3",SwingConstants.CENTER);
-        middle.add(label3);
-        JLabel label2 = new JLabel("2^2",SwingConstants.CENTER);
-        middle.add(label2);
-        JLabel label1 = new JLabel("2^1",SwingConstants.CENTER);
-        middle.add(label1);
-        JLabel label0 = new JLabel("2^0",SwingConstants.CENTER);
-        middle.add(label0);
+        JPanel middle = getjPanel();
         frame.add(middle);
         //down label
         JPanel f = new JPanel();
@@ -93,16 +79,40 @@ public class BinaryNumber implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-    public void actionPerformed(ActionEvent e){ 
+
+    private static JPanel getjPanel() {
+        JPanel middle = new JPanel();
+        middle.setLayout(new GridLayout(1, 8, 2, 2));
+        JLabel label7 = new JLabel("2^7", SwingConstants.CENTER);
+        middle.add(label7);
+        JLabel label6 = new JLabel("2^6", SwingConstants.CENTER);
+        middle.add(label6);
+        JLabel label5 = new JLabel("2^5", SwingConstants.CENTER);
+        middle.add(label5);
+        JLabel label4 = new JLabel("2^4", SwingConstants.CENTER);
+        middle.add(label4);
+        JLabel label3 = new JLabel("2^3", SwingConstants.CENTER);
+        middle.add(label3);
+        JLabel label2 = new JLabel("2^2", SwingConstants.CENTER);
+        middle.add(label2);
+        JLabel label1 = new JLabel("2^1", SwingConstants.CENTER);
+        middle.add(label1);
+        JLabel label0 = new JLabel("2^0", SwingConstants.CENTER);
+        middle.add(label0);
+        return middle;
+    }
+
+    public void actionPerformed(ActionEvent e) {
         JToggleButton[] namen = {nul, eins, zwei, drei, vier, fuenf, sechs, sieben};
         int ergebnis = 0;
-        for(int i = 0; i<8 ; i++) {
+        for (int i = 0; i < 8; i++) {
             if (namen[i].isSelected()) {
-                ergebnis += (Math.pow(2.0d, i));
+                ergebnis += (int) Math.pow(2.0d, i);
             }
         }
         ergebnis1.setText(String.valueOf(ergebnis));
     }
+
     public static void main(String[] args) {
         new BinaryNumber();
     }

@@ -1,16 +1,18 @@
 package de.dhbwka.java.exercise.ui;
+
 import java.awt.*;
 
 import javax.swing.*;
 
 public class CurrencyCalculator {
-    JFrame frame;
+    final JFrame frame;
+
     public CurrencyCalculator() {
         frame = new JFrame();
         frame.setLayout(new BorderLayout(5, 5));
 
         frame.add(new JTextField("Please enter amount to convert!"), BorderLayout.NORTH);
-        
+
         JPanel unteresPanel = new JPanel();
         unteresPanel.add(new JButton("EUR > USD"));
         unteresPanel.add(new JButton("USD > EUR"));

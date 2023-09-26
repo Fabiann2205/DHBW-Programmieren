@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoronaWarnTerm implements CoronaWarnClient, Runnable{
+public class CoronaWarnTerm implements CoronaWarnClient, Runnable {
 
     private final JPhone phone;
     private WarnStatus status = WarnStatus.UNKNOWN;
@@ -35,7 +35,7 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable{
         //Label with current status
         JLabel topLabel = new JLabel(this.status.getText());
         topLabel.setOpaque(true);
-        topLabel.setPreferredSize(new java.awt.Dimension(0,100));
+        topLabel.setPreferredSize(new java.awt.Dimension(0, 100));
         topLabel.setHorizontalAlignment(JLabel.CENTER);
         topLabel.setBackground(this.status.getColor());
         listPane.add(topLabel);
@@ -97,7 +97,7 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable{
 
         // add stuff to UI
         frame.add(listPane);
-        frame.setTitle(this.phone.getOwner());
+        frame.setTitle(this.phone.owner());
         frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -133,7 +133,7 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable{
 
     @Override
     public void run() {
-        while(this.status != WarnStatus.INFECTED){
+        while (this.status != WarnStatus.INFECTED) {
             try {
                 Thread.sleep(5000);
                 currentToken = new Token();

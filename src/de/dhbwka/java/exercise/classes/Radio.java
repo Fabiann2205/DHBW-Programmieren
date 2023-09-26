@@ -7,7 +7,7 @@ package de.dhbwka.java.exercise.classes;
  * Frequenz und ob das Radio an oder aus ist.
  * Auch gibt es für jede Funktion mehrere Funktionen,
  * um diesen jeweiligen Status zu toggeln.
- * 
+ *
  * @author Fabian Specht
  * @version 1.1
  * @since 1.0
@@ -30,8 +30,9 @@ public class Radio {
     /**
      * Konstruktor für Radio
      * Übergabewerte sind folgende:
-     * @param on Status des Radios
-     * @param volume Lautstärke des Radios
+     *
+     * @param on        Status des Radios
+     * @param volume    Lautstärke des Radios
      * @param frequency Frequenz des Radios
      */
     public Radio(boolean on, int volume, double frequency) {
@@ -46,25 +47,27 @@ public class Radio {
      * Volume: 5
      * Frequenz: 99.9
      */
-    public Radio () {
-        this(true,5,99.9);
+    public Radio() {
+        this(true, 5, 99.9);
     }
 
     /**
      * toString Methode gibt Status des Radios als String zurück
+     *
      * @return String Status Radio
      */
     @Override
     public String toString() {
         return "{" +
-            " on='" + on + "'" +
-            ", volume='" + volume + "'" +
-            ", frequency='" + frequency + "'" +
-            "}";
+                " on='" + on + "'" +
+                ", volume='" + volume + "'" +
+                ", frequency='" + frequency + "'" +
+                "}";
     }
 
 
     //setters und getters
+
     /**
      * @return Boolean Status (on/off)
      */
@@ -81,6 +84,7 @@ public class Radio {
 
     /**
      * Setzt Radio auf on oder off
+     *
      * @param on Status (on/off)
      */
     public void setOn(boolean on) {
@@ -97,16 +101,13 @@ public class Radio {
     /**
      * Radio auf gewisse Lautstärke setzen.
      * Wenn Lautstärke nicht zwsichen 0 und 10, dann bleibt Lautstärke wie sie ist
+     *
      * @param volume gewünschte Lautstärke
      */
     public void setVolume(int volume) {
-        if (volume<0) {
+        if (volume < 0) {
             this.volume = 0;
-        } else if (volume>10) {
-            this.volume = 10;
-        } else {
-            this.volume = volume;
-        }
+        } else this.volume = Math.min(volume, 10);
     }
 
     /**
@@ -117,12 +118,13 @@ public class Radio {
     }
 
     /**
-     * Frequen setzen.
+     * Frequenz setzen.
      * Wenn Frequenz außerhalb des erlaubten Bereiches, dann setzen auf 99.9
+     *
      * @param frequency Gewünschte Frequenz
      */
     public void setFrequency(double frequency) {
-        if ( frequency >= 85.0 & frequency <= 110.0){
+        if (frequency >= 85.0 & frequency <= 110.0) {
             this.frequency = frequency;
         } else {
             this.frequency = 99.9;
@@ -134,9 +136,9 @@ public class Radio {
      * Volume um 1 erhöhen
      */
     public void incVolume() {
-        if(this.isOn()) {
-            this.setVolume(this.volume+1);
-        }  
+        if (this.isOn()) {
+            this.setVolume(this.volume + 1);
+        }
     }
 
     /**
@@ -144,35 +146,36 @@ public class Radio {
      */
     public void decVolume() {
         if (this.isOn()) {
-             this.setVolume(this.volume-1);
+            this.setVolume(this.volume - 1);
         }
-       
+
     }
 
     /**
      * Radio einschalten
      */
-    public void turnOn(){
+    public void turnOn() {
         this.setOn(true);
     }
 
     /**
      * Radio ausschalten
      */
-    public void turnOff(){
+    public void turnOff() {
         this.setOn(false);
     }
 
     /**
      * Hauptprogramm zum Testen des Radios
+     *
      * @param args Kommandozeilen-Parameter
      */
 
     public static void main(String[] args) {
-        Radio sony = new Radio(true, 9,200);
+        Radio sony = new Radio(true, 9, 200);
         sony.incVolume();
         sony.incVolume();
         System.out.println(sony);
     }
-    
+
 }

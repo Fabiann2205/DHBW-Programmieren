@@ -2,20 +2,20 @@ package de.ownclasses;
 
 public class Printer {
     public void printArray(int[] array) {
-        for(int x=0; x < array.length; x++) {
-            System.out.printf("%d ", array[x]);
+        for (int i : array) {
+            System.out.printf("%d ", i);
         }
     }
 
     public void printArray(double[] array) {
-        for(int x=0; x < array.length; x++) {
-            System.out.printf("%f ", array[x]);
+        for (double v : array) {
+            System.out.printf("%f ", v);
         }
     }
 
     public void printArray(String[] array) {
-        for(int x=0; x < array.length; x++) {
-            System.out.printf("%s ", array[x]);
+        for (String s : array) {
+            System.out.printf("%s ", s);
         }
     }
 }

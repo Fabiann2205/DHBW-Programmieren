@@ -14,10 +14,10 @@ public class PalindromeFile {
         try {
             apt.createNewFile();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error" + e);
         }
         try (Writer fWriter = new FileWriter("resources/palindrome.txt", true)) {
-            while(run) {
+            while (run) {
                 System.out.print("Bitte Wort eingeben: ");
                 String s = eingabe.next();
                 //eingabe.close();
@@ -33,18 +33,18 @@ public class PalindromeFile {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error" + e);
         }
-        
+
         eingabe.close();
     }
 
     public static boolean isPalindrome(String s) {
-        String s2 = "";
+        StringBuilder s2 = new StringBuilder();
         for (int i = s.length() - 1; i >= 0; i--) {
-            s2 += s.charAt(i);
+            s2.append(s.charAt(i));
         }
         System.out.println("Umgedreht: " + s2);
-        return s.equalsIgnoreCase(s2);
+        return s.equalsIgnoreCase(s2.toString());
     }
 }

@@ -3,7 +3,8 @@ package de.dhbwka.java.exercise.ui;
 import javax.swing.*;
 
 public class ComponentFrame {
-    JFrame frame;
+    final JFrame frame;
+
     public ComponentFrame() {
         frame = new JFrame();
         JPanel jp = new JPanel();
@@ -19,12 +20,12 @@ public class ComponentFrame {
         jp.add(new JToggleButton("JToggleButton", false));
         jp.add(new JCheckBox("JCheckBox", false));
 
-        String comboBoxListe[] = {"Baden-Württemberg", "Bayern",
-        "Berlin", "Brandenburg", "Bremen",
-        "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
-        "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
-        "Saarland", "Sachsen", "Sachsen-Anhalt",
-        "Schleswig-Holstein", "Thüringen"};
+        String[] comboBoxListe = {"Baden-Württemberg", "Bayern",
+                "Berlin", "Brandenburg", "Bremen",
+                "Hamburg", "Hessen", "Mecklenburg-Vorpommern",
+                "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz",
+                "Saarland", "Sachsen", "Sachsen-Anhalt",
+                "Schleswig-Holstein", "Thüringen"};
         jp.add(new JComboBox<>(comboBoxListe));
 
         JRadioButton Button1 = new JRadioButton("Button 1", true);
@@ -50,5 +51,5 @@ public class ComponentFrame {
     public static void main(String[] args) {
         new ComponentFrame();
         System.out.println("hallo");
-    } 
+    }
 }

@@ -10,20 +10,12 @@ public class LeapYear {
         eingabe.close();
 
         boolean schaltjahr = false;
-        
-        if (jahr % 100 == 0) {
-            if (jahr % 400 == 0) {
-                schaltjahr = true;
-            } else {
-                schaltjahr = false;
-            }
-        } else if ( jahr % 4 == 0) {
-            schaltjahr = true;
-        } else {
-            schaltjahr = false;
-        }
 
-        System.out.println(jahr + ((schaltjahr == true) ? " ist ein Schaltjahr" : " ist kein Schaltjahr" ));
+        if (jahr % 100 == 0) {
+            schaltjahr = jahr % 400 == 0;
+        } else schaltjahr = jahr % 4 == 0;
+
+        System.out.println(jahr + ((schaltjahr) ? " ist ein Schaltjahr" : " ist kein Schaltjahr"));
 
     }
 }

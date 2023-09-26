@@ -1,26 +1,21 @@
 package de.dhbwka.java.exams.darts;
 
-//Teilaufgabe c
-public class Visit {
-    //max 3 Würfe
-    private Field[] fields;
-
+/**
+ * @param fields max 3 Würfe
+ */ //Teilaufgabe c
+public record Visit(Field[] fields) {
     public Visit(Field[] fields) {
-        if (fields.length>3) {
+        if (fields.length > 3) {
             throw new IllegalArgumentException();
         } else {
             this.fields = fields;
         }
     }
 
-    public Field[] getFields() {
-        return this.fields;
-    }
-
     public int getValue() {
         int valuetoreturn = 0;
-        for (int i = 0; i<this.fields.length; i++) {
-            valuetoreturn += this.fields[i].getValue();
+        for (Field field : this.fields) {
+            valuetoreturn += field.getValue();
         }
         return valuetoreturn;
     }

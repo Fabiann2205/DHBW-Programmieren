@@ -1,10 +1,12 @@
 package de.dhbwka.java.exercise.threads.buffer;
 
-public class ProducerThread extends Thread{
-    MyBuffer buf;
+public class ProducerThread extends Thread {
+    final MyBuffer buf;
+
     public ProducerThread(MyBuffer b) {
         this.buf = b;
     }
+
     public void run() {
         this.buf.put(5);
         this.buf.put(6);

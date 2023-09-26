@@ -1,12 +1,11 @@
 package de.dhbwka.java.exams.soederMemory;
 
-import java.util.ArrayList;
 import java.util.*;
-import java.util.Random;
 
 public class MemoryGame {
-    private int rows, cols;
-    private List<Player> players;
+    private final int rows;
+    private final int cols;
+    private final List<Player> players;
     private final List<MemoryImages.MemoryImage> images;
     private Player currentPlayer;
     private int currentPlayerId;
@@ -14,47 +13,45 @@ public class MemoryGame {
     public MemoryGame(List<Player> players, List<MemoryImages.MemoryImage> images, int rows, int cols) throws MemoryException {
         this.rows = rows;
         this.cols = cols;
-        if (players.size()<2) {
+        if (players.size() < 2) {
             throw new MemoryException("At least two players required");
         } else {
             this.players = players;
         }
         // Liste der verfügbaren images
-        if (((rows*cols)%2)== 0) {
+        if (((rows * cols) % 2) == 0) {
             if (images.size() < ((rows * cols) / 2)) {
                 throw new MemoryException("Too few images available");
             } else {
-                this.images = getRandomImages(images, (rows*cols));
+                this.images = getRandomImages(images, (rows * cols));
             }
         } else {
-            if (images.size() < (((rows * cols)-1) / 2)) {
+            if (images.size() < (((rows * cols) - 1) / 2)) {
                 throw new MemoryException("Too few images available");
             } else {
-                this.images = getRandomImages(images, ((rows*cols)-1)); // vl eins weniger???
+                this.images = getRandomImages(images, ((rows * cols) - 1)); // vl eins weniger???
             }
         }
         this.currentPlayer = this.players.get(0);
         this.currentPlayerId = 0;
     }
 
-    private List<MemoryImages.MemoryImage> getRandomImages (List<MemoryImages.MemoryImage> allImages, int anzahl) {
+    private List<MemoryImages.MemoryImage> getRandomImages(List<MemoryImages.MemoryImage> allImages, int anzahl) {
         //random numbers without duplicates (save for exam)
         List<MemoryImages.MemoryImage> randomImages = new ArrayList<>();
-        if (allImages.size() < anzahl)
-        {
+        if (allImages.size() < anzahl) {
             throw new IllegalArgumentException("Can't ask for more numbers than are available");
         }
         Random rng = new Random();
-        Set<Integer> generated = new LinkedHashSet<Integer>();
-        while (generated.size() < anzahl)
-        {
+        Set<Integer> generated = new LinkedHashSet<>();
+        while (generated.size() < anzahl) {
             Integer next = rng.nextInt(allImages.size()) + 1;
             // As we're adding to a set, this will automatically do a containment check
             generated.add(next);
         }
 
         for (Integer a : generated) {
-            randomImages.add(allImages.get(a-1));
+            randomImages.add(allImages.get(a - 1));
         }
         return randomImages;
     }
@@ -69,11 +66,11 @@ public class MemoryGame {
 
     public void nextPlayer() {
         this.currentPlayer.setStatus(PlayerStatus.WAITING);
-        if (this.currentPlayerId+1 == players.size()) {
+        if (this.currentPlayerId + 1 == players.size()) {
             this.currentPlayer = players.get(0);
             this.currentPlayerId = 0;
         } else {
-            this.currentPlayer = players.get(this.currentPlayerId+1);
+            this.currentPlayer = players.get(this.currentPlayerId + 1);
             this.currentPlayerId++;
         }
         this.currentPlayer.setStatus(PlayerStatus.ACTIVE);

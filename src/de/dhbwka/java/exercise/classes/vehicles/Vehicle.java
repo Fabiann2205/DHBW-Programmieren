@@ -2,7 +2,7 @@ package de.dhbwka.java.exercise.classes.vehicles;
 
 import java.util.Objects;
 
-public class Vehicle{
+public class Vehicle {
     protected int tires;
     protected double vMax, position, speed; //position in km
 
@@ -18,36 +18,20 @@ public class Vehicle{
     }
 
     public void setSpeed(double speed) {
-        if (speed >= this.vMax) {
-            this.speed = this.vMax;
-        } else {
-            this.speed = speed;
-        }
+        this.speed = Math.min(speed, this.vMax);
     }
 
     public int getTires() {
         return this.tires;
     }
 
-    // public void setTires(int tires) {
-    //     this.tires = tires;
-    // }
-
     public double getVMax() {
         return this.vMax;
     }
 
-    // public void setVMax(double vMax) {
-    //     this.vMax = vMax;
-    // }
-
     public double getPosition() {
         return this.position;
     }
-
-    // public void setPosition(double position) {
-    //     this.position = position;
-    // }
 
     public void drive(double minutes) {
         if (speed != 0) {
@@ -59,10 +43,10 @@ public class Vehicle{
     @Override
     public String toString() {
         return (this.getClass().getSimpleName()
-        + " at position " + this.getPosition()
-        + " km with " + this.getTires()
-        + " wheels at speed " + this.getSpeed()
-        + " km/h of max. " + this.getVMax() + " km/h.");
+                + " at position " + this.getPosition()
+                + " km with " + this.getTires()
+                + " wheels at speed " + this.getSpeed()
+                + " km/h of max. " + this.getVMax() + " km/h.");
     }
 
 
@@ -70,10 +54,9 @@ public class Vehicle{
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Vehicle)) {
+        if (!(o instanceof Vehicle vehicle)) {
             return false;
         }
-        Vehicle vehicle = (Vehicle) o;
         return tires == vehicle.tires && vMax == vehicle.vMax && position == vehicle.position && speed == vehicle.speed;
     }
 
@@ -83,5 +66,4 @@ public class Vehicle{
     }
 
 
-    
 }

@@ -16,11 +16,11 @@ public class Palindrome {
     }
 
     public static boolean isPalindrome(String s) {
-        String s2 = "";
+        StringBuilder s2 = new StringBuilder();
         for (int i = s.length() - 1; i >= 0; i--) {
-            s2 += s.charAt(i);
+            s2.append(s.charAt(i));
         }
         System.out.println("Umgedreht: " + s2);
-        return s.equalsIgnoreCase(s2);
+        return s.equalsIgnoreCase(s2.toString());
     }
 }

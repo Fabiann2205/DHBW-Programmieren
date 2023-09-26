@@ -5,8 +5,8 @@ import java.util.Date;
 import static java.util.UUID.randomUUID;
 
 public class Token {
-    private String value;
-    private Date date;
+    private final String value;
+    private final Date date;
 
     public Token(String value, Date date) {
         this.value = value;

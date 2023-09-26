@@ -11,12 +11,12 @@ public class Race {
         // 4 hours lead for the bike
         vehicles[0].drive(240.0);
         // 1 hour of driving for everyone
-        for (int i = 0; i < vehicles.length; i++) { 
-            vehicles[i].drive(60);
+        for (Vehicle value : vehicles) {
+            value.drive(60);
         }
-      // Output Race
-        for (int i = 0; i < vehicles.length; i++) { 
-            System.out.println(vehicles[i].toString());
+        // Output Race
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle.toString());
         }
 
         System.out.println(vehicles[0].hashCode());
@@ -24,6 +24,6 @@ public class Race {
         System.out.println(vehicles[2].hashCode());
         System.out.println(vehicles[3].hashCode());
         System.out.println(vehicles[0].equals(vehicles[0]));
-        
+
     }
 }

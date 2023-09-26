@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyBuffer {
-    private List<Integer> value = new ArrayList<>();
+    private final List<Integer> value = new ArrayList<>();
     private boolean empty = true;
+
     // the producer routine
     public synchronized void put(int v) {
         if (!this.empty) {
             try {
                 this.wait();
             } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
         // buffer is empty, fill it!
@@ -29,18 +31,20 @@ public class MyBuffer {
             try {
                 this.wait();
             } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
         // buffer is full, empty it!
         v = this.value.get(element);
         this.value.remove(element);
-        this.empty = this.value.size() == 0;
+        this.empty = this.value.isEmpty();
 
         // notify waiting producer
         this.notify();
         System.out.println("Get:" + v);
         return v;
     }
+
     public static void main(String[] args) {
         MyBuffer buf = new MyBuffer();
         buf.put(5);

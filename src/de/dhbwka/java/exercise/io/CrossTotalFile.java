@@ -12,30 +12,30 @@ public class CrossTotalFile {
         System.out.print("Bitte Zahl für Quersumme eingeben: ");
         String s = eingabe.next();
 
-        Integer sInt = Integer.valueOf(s);
+        int sInt = Integer.parseInt(s);
         int sum = 0;
         while (sInt > 0) {
             sum += sInt % 10;
             sInt /= 10;
         }
-     
+
         File output = new File("resources/crosstotals.txt");
         try {
             output.createNewFile();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error" + e);
         }
 
         System.out.println("Quersumme: " + sum);
 
-        try ( Writer fWriter = new FileWriter("resources/crosstotals.txt", true) ) {
-            fWriter.write("Quersumme von "+s+ " ist "+sum+"\n");
+        try (Writer fWriter = new FileWriter("resources/crosstotals.txt", true)) {
+            fWriter.write("Quersumme von " + s + " ist " + sum + "\n");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println("Error" + ex);
         }
 
         eingabe.close();
-        
-        
+
+
     }
 }
