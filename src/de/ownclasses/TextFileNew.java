@@ -22,7 +22,7 @@ public class TextFileNew {
                 System.out.println("File " + this.file.getAbsolutePath() + "  was created successfully");
             } else {
                 System.out.println("File " + this.file.getAbsolutePath() + " could not be created or already there");
-            };
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +35,7 @@ public class TextFileNew {
                 System.out.println("File " + this.file.getAbsolutePath() + "  was created successfully");
             } else {
                 System.out.println("File " + this.file.getAbsolutePath() + " could not be created or already there");
-            };
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +63,7 @@ public class TextFileNew {
 
     // get one specific line as String
     public String getLine(int i) throws LineNumberOutOfBoundsException, IOErrorInFile {
-        String current = "";
+        String current;
         try ( BufferedReader br = new BufferedReader(new FileReader(this.file)) ) {
             int count = 0;
             while (br.ready()) {
