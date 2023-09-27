@@ -138,7 +138,7 @@ public class ChoronaTerminal implements Runnable {
     public void run() {
         saveButton.setEnabled(false);
         stepButton.setEnabled(false);
-        for (int st = 0; st < 1000; st++) {
+        for (int st = 0; st < 20; st++) {
             stepAction();
             try {
                 Thread.sleep(500);
