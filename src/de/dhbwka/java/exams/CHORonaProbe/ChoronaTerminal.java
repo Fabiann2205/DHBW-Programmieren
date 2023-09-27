@@ -17,6 +17,7 @@ public class ChoronaTerminal implements Runnable {
     private JLabel stepsLabel;
     private List<CellButton> cellButtons;
     private JButton stepButton, playButton, saveButton;
+    private JPanel centerPane;
 
     public ChoronaTerminal(Variant variant, Room room) {
         this.variant = variant;
@@ -26,7 +27,7 @@ public class ChoronaTerminal implements Runnable {
         // UI
         JFrame frame = new JFrame();
         JPanel topPane = new JPanel();
-        JPanel centerPane = new JPanel();
+        centerPane = new JPanel();
         centerPane.setLayout(new GridLayout(this.room.getSetting().getHeight(), this.room.getSetting().getWidth()));
         JPanel bottomPane = new JPanel();
         frame.setLayout(new BorderLayout());
@@ -77,7 +78,6 @@ public class ChoronaTerminal implements Runnable {
                 playButton.setEnabled(false);
                 thread = new Thread(that);
                 thread.start();
-
             }
         };
 
@@ -89,9 +89,13 @@ public class ChoronaTerminal implements Runnable {
             public void actionPerformed(ActionEvent e) {
                 TextFileNew textFileNew = new TextFileNew("resources/CHORona/" + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
                 List<String> liste = new ArrayList<>();
-                for (CellButton c : cellButtons) {
-                    liste.add(c.getPositionX() + ";" + c.getPositionY() + ";" + c.getDose());
+
+                for (int i = 0; i < room.getSetting().getWidth(); i++) {
+                    for (int j = 0; j < room.getSetting().getHeight(); j++) {
+                        liste.add(j + "; " + i + "; " + room.getDose(i, j));
+                    }
                 }
+
                 try {
                     textFileNew.writeAllLines(liste);
                     JOptionPane.showMessageDialog(frame,
@@ -134,7 +138,7 @@ public class ChoronaTerminal implements Runnable {
     public void run() {
         saveButton.setEnabled(false);
         stepButton.setEnabled(false);
-        for (int st = 0; st < 20; st++) {
+        for (int st = 0; st < 1000; st++) {
             stepAction();
             try {
                 Thread.sleep(500);
