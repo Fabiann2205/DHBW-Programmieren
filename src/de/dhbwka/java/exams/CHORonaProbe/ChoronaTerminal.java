@@ -37,12 +37,12 @@ public class ChoronaTerminal implements Runnable {
 
         // center of UI
         cellButtons = new ArrayList<>();
-        int sizeOfField = this.room.getSetting().getHeight() * this.room.getSetting().getWidth();
         CellButton button;
         for (int i = 0; i < this.room.getSetting().getWidth(); i++) {
             for (int j = 0; j < this.room.getSetting().getHeight(); j++) {
                 button = new CellButton(String.valueOf(i + j), i, j);
                 button.setPolluter(false);
+                button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 for (Point p : this.room.getSetting().getPolluters()) {
                     if (p.equals(new Point(i, j))) {
                         button.setPolluter(true);
@@ -50,10 +50,11 @@ public class ChoronaTerminal implements Runnable {
                     }
                 }
                 Chorona.updateButtonForDose(button, this.room.getDose(i, j));
+                button.setOpaque(true);
                 // ItemListener itemListener = itemEvent -> {};
                 // button.addItemListener(itemListener);
                 cellButtons.add(button);
-                centerPane.add(cellButtons.get(cellButtons.size() - 1));
+                centerPane.add(button);
             }
         }
 
@@ -73,12 +74,10 @@ public class ChoronaTerminal implements Runnable {
         ActionListener actionListenerPlay = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Thread(that).start();
+                playButton.setEnabled(false);
+                thread = new Thread(that);
+                thread.start();
 
-                if (thread == null) {
-                    thread = new Thread(that);
-                    thread.start();
-                }
             }
         };
 
@@ -145,5 +144,6 @@ public class ChoronaTerminal implements Runnable {
         }
         saveButton.setEnabled(true);
         stepButton.setEnabled(true);
+        playButton.setEnabled(true);
     }
 }
