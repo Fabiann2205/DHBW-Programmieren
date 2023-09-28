@@ -99,11 +99,11 @@ public class ChoronaTerminal implements Runnable {
                 try {
                     textFileNew.writeAllLines(liste);
                     JOptionPane.showMessageDialog(frame,
-                            "Successful created file");
+                            "Successful created file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
                 } catch (IOErrorInFile ex) {
                     JOptionPane.showMessageDialog(frame,
-                            "Error creating file",
-                            "Inane error",
+                            "Error creating file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt",
+                            "Insane error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
