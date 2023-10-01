@@ -27,6 +27,7 @@ public class ChoronaTerminal implements Runnable {
         // UI
         JFrame frame = new JFrame();
         JPanel topPane = new JPanel();
+        topPane.setBorder(BorderFactory.createEmptyBorder(200, 20, 20, 10));
         centerPane = new JPanel();
         centerPane.setLayout(new GridLayout(this.room.getSetting().getHeight(), this.room.getSetting().getWidth()));
         JPanel bottomPane = new JPanel();
