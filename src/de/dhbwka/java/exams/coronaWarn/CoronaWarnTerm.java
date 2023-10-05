@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoronaWarnTerm implements CoronaWarnClient, Runnable {
+public class CoronaWarnTerm implements CoronaWarnClient {
 
     private final JPhone phone;
     private WarnStatus status = WarnStatus.UNKNOWN;
@@ -14,7 +14,6 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable {
 
     private JLabel seenTokensLabel;
     private final CoronaWarnClient that;
-    private Thread thread;
 
 
     public CoronaWarnTerm(JPhone phone) {
@@ -102,12 +101,26 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        new Thread(this).start();
+        Runnable autoStart = new Runnable() {
+            @Override
+            public void run() {
+                while (status != WarnStatus.INFECTED) {
+                    try {
+                        Thread.sleep(5000);
+                        currentToken = new Token();
+                        tokens.add(currentToken);
+                        CoronaWarn.saveToken(phone, currentToken);
+                        CoronaWarnAPI.sendToken(that);
+                        seenTokensLabel.setToolTipText(currentToken.toString());
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        };
+        new Thread(autoStart).start();
 
-        if (thread == null) {
-            thread = new Thread(this);
-            thread.start();
-        }
+
     }
 
     @Override
@@ -131,20 +144,6 @@ public class CoronaWarnTerm implements CoronaWarnClient, Runnable {
         this.seenTokensLabel.setText("Seen Tokens: " + this.seenTokens.size());
     }
 
-    @Override
-    public void run() {
-        while (this.status != WarnStatus.INFECTED) {
-            try {
-                Thread.sleep(5000);
-                currentToken = new Token();
-                tokens.add(currentToken);
-                CoronaWarn.saveToken(phone, currentToken);
-                CoronaWarnAPI.sendToken(that);
-                seenTokensLabel.setToolTipText(currentToken.toString());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+
 }
 
