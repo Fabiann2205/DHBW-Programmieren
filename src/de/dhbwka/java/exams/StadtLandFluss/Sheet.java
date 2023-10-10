@@ -3,10 +3,13 @@ package de.dhbwka.java.exams.StadtLandFluss;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sheet {
     private Player player;
     private Game game;
+    private List<JTextField> raten = new ArrayList<>();
 
     public Sheet(Player player, Game game) {
         this.player = player;
@@ -79,6 +82,14 @@ public class Sheet {
 
     public void inform() {
 
+    }
+
+    public List<String> getWordsForAllLabels() {
+        List<String> zumReturn = new ArrayList<>();
+        for (JTextField b : raten) {
+            zumReturn.add(b.getText());
+        }
+        return zumReturn;
     }
 
     public static void main(String[] args) {

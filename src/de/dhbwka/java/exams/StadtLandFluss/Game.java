@@ -86,14 +86,33 @@ public class Game {
         }
     }
 
-    private int calculatePoints(List<String> word) {
-        this.registeredSheets.get(1);
+    private List<Integer> calculatePoints() {
+        int i = 0;
+        List<Integer> ergebnisse = new ArrayList<>();
+        List<String> woerter = new ArrayList<>();
+        for (ColumnType c : columns) {
+            for (Sheet d : registeredSheets) {
+                woerter.add(d.getWordsForAllLabels().get(i));
+            }
+            int j = 0;
+            int ergebnis = 0;
+            for (String s : woerter) {
+                if (s.charAt(0) == this.letter) {
+                    ergebnis += 5;
+                }
+                woerter.remove(j);
+                if (!woerter.contains(s)) {
+                    ergebnis += 5;
+                }
+                j++;
+            }
+            i++;
+        }
+        return ergebnisse;
     }
 
     public static void main(String[] args) {
         Game game = new Game(3, 20, 60);
-        List<ColumnType> kkk = game.createColumns();
-        System.out.println(kkk);
     }
 
 
