@@ -1,6 +1,7 @@
 package de.dhbwka.java.exams.StadtLandFluss;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -10,6 +11,32 @@ public class Game {
     private int timeLeft;
     private boolean running;
     private int min, max;
+
+    private List<Sheet> registeredSheets = new ArrayList<>();
+
+    public char getLetter() {
+        return letter;
+    }
+
+    public List<ColumnType> getColumns() {
+        return columns;
+    }
+
+    public int getTimeLeft() {
+        return timeLeft;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
 
     public Game(int min, int max, int seconds) {
         this.timeLeft = seconds;
@@ -31,10 +58,43 @@ public class Game {
         liste.add(ColumnType.CITY);
         liste.add(ColumnType.RIVER);
         if (a > 3) {
-            for (int i = 0; i <= a; i++) {
-                liste.add(); //add random fields except country city and river and no duplicates
+            int b = 0;
+            if (a - 3 > ColumnType.values().length - 3) {
+                b = ColumnType.values().length - 3;
+            } else {
+                b = a - 3;
             }
+            liste.addAll(Arrays.asList(ColumnType.values()).subList(3, b + 3));
         }
         return liste;
     }
+
+    public void register(Sheet sheet) {
+        this.registeredSheets.add(sheet);
+    }
+
+    public void startGame() {
+        if (!this.running) {
+            this.letter = this.createFirstCharacter();
+            this.columns = this.createColumns();
+        }
+    }
+
+    public void stopGame() {
+        for (Sheet a : registeredSheets) {
+            a.inform();
+        }
+    }
+
+    private int calculatePoints(List<String> word) {
+        this.registeredSheets.get(1);
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game(3, 20, 60);
+        List<ColumnType> kkk = game.createColumns();
+        System.out.println(kkk);
+    }
+
+
 }
