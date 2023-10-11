@@ -11,3 +11,9 @@ Lothar bets Fasid (99) on match England : Frankreich
 Lothar bets Fasid (99) on match Gewinner AF 7 : Gewinner AF 8
 Lothar bets Fasid (99) on match Niederlande : Argentinien
 Lothar bets Fasid (99) on match Gewinner AF 5 : Gewinner AF 6
+Franz bets Guest (2) on match Gewinner HF 1 : Gewinner HF 2
+Franz bets Fasid (99) on match Katar : Ecuador
+Lothar bets Fasid (99) on match Katar : Ecuador
+Lothar bets Guest (2) on match Katar : Ecuador
+Lothar bets Fasid (99) on match Senegal : Niederlande
+Lothar bets Home (1) on match Katar : Senegal

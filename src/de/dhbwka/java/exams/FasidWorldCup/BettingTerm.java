@@ -24,6 +24,7 @@ public class BettingTerm {
         for (Match m : matches) {
             if (m.getResultType() == ResultType.UNKNOWN) {
                 currentMatch = m;
+                break;
             } else {
                 throw new FasidException("no match to bet on");
             }
@@ -77,12 +78,16 @@ public class BettingTerm {
             }
 
             this.fasidTerm.reportBet(this.player, this.currentMatch);
+            boolean found = false;
             for (Match m : this.matches) {
                 if (m.getResultType() == ResultType.UNKNOWN) {
                     this.currentMatch = m;
-                } else {
-                    sendButton.setEnabled(false);
+                    found = true;
+                    break;
                 }
+            }
+            if (!found) {
+                sendButton.setEnabled(false);
             }
 
             labelMatch.setText(currentMatch.toString());

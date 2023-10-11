@@ -17,6 +17,7 @@ public class FasidTerm implements CorruptionPrevention {
     private List<JButton> jbuttonsPlayers = new ArrayList<>();
     private JTextArea area;
     private FasidAlarmLabel alarmLabel;
+    private List<BettingTerm> terms = new ArrayList<>();
 
     public FasidTerm(List<Match> matches, Player[] players) throws FasidException {
         if (matches.isEmpty() || players.length == 0) {
@@ -41,7 +42,7 @@ public class FasidTerm implements CorruptionPrevention {
                 System.out.println("Button was pressed!");
                 JButton buttons = (JButton) e.getSource();
                 try {
-                    new BettingTerm(p, this, this.matches);
+                    terms.add(new BettingTerm(p, this, this.matches));
                 } catch (FasidException ex) {
                     System.out.println("Fehler");
                 }
