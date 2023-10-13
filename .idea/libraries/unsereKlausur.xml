@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="unsereKlausur">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/de/dhbwka/java/exams/unsereKlausur/PE_SoSe2023_Dateien.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/dhbwka/java/exams/unsereKlausur/Programmentwurf7600584.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
