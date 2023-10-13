@@ -1,9 +1,9 @@
 package de.dhbwka.java.exams.coronaWarn;
 
-import de.ownclasses.TextFileNew;
-import de.ownclasses.exceptions.IOErrorInFile;
+import exam.ownclasses.TextFile;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class CoronaWarn {
      * @param phone phone to clear store for
      */
     public static void clearTokenStore(JPhone phone) {
-        new TextFileNew("resources/" + phone.id() + "-tokens.txt").deleteFile();
+        new TextFile("resources/" + phone.id() + "-tokens.txt").deleteFile();
     }
 
     /**
@@ -57,8 +57,8 @@ public class CoronaWarn {
         List<Token> tokens = new LinkedList<>();
         List<String> data;
         try {
-            data = new TextFileNew("resources/" + phone.id() + "-tokens.txt").getAllLines();
-        } catch (IOErrorInFile e) {
+            data = new TextFile("resources/" + phone.id() + "-tokens.txt").getAllLines();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         for (String line : data) {
@@ -75,7 +75,7 @@ public class CoronaWarn {
      */
     public static void saveToken(JPhone phone, Token token) {
         String line = token.getValue() + ";" + token.getDate().getTime();
-        new TextFileNew("resources/" + phone.id() + "-tokens.txt").addLine(line);
+        new TextFile("resources/" + phone.id() + "-tokens.txt").addLine(line);
     }
 
     /**

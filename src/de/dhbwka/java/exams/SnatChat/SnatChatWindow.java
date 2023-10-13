@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.SnatChat;
 
-import de.ownclasses.TextFileNew;
+import exam.ownclasses.TextFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,14 +12,14 @@ public class SnatChatWindow extends JFrame implements SnatChatFrontend {
     private Account account;
 
     private ChatMessagesComponent msgComp;
-    private TextFileNew file;
+    private TextFile file;
 
 
     public SnatChatWindow(SnatChatRoom snatChatRoom, Account account) {
         this.snatChatRoom = snatChatRoom;
         this.account = account;
         this.msgComp = new ChatMessagesComponent();
-        this.file = new TextFileNew("resources/" + this.snatChatRoom.getRoomName() + ".txt");
+        this.file = new TextFile("resources/" + this.snatChatRoom.getRoomName() + ".txt");
         try {
             for (int i = 0; ((i + file.availableLines() - 10) < file.availableLines() && file.availableLines() > 9) || (file.availableLines() < 10 && i < 10); i++) {
                 JLabel lbl;
@@ -42,7 +42,7 @@ public class SnatChatWindow extends JFrame implements SnatChatFrontend {
         lblAccName.setForeground(account.getColor());
         this.add(lblAccName, BorderLayout.NORTH);
 
-        JPanel panState = new JPanel(new FlowLayout(JLabel.CENTER));
+        JPanel panState = new JPanel(new FlowLayout(FlowLayout.CENTER));
         ButtonGroup grp = new ButtonGroup();
         for (State state : State.values()) {
             JRadioButton btn = new JRadioButton(state.getLabel());

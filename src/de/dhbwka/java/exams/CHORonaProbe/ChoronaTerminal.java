@@ -1,12 +1,12 @@
 package de.dhbwka.java.exams.CHORonaProbe;
 
-import de.ownclasses.TextFileNew;
-import de.ownclasses.exceptions.IOErrorInFile;
+import exam.ownclasses.TextFile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class ChoronaTerminal implements Runnable {
         ActionListener saveActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TextFileNew textFileNew = new TextFileNew("resources/CHORona/" + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
+                TextFile textFileNew = new TextFile("resources/CHORona/" + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
                 List<String> liste = new ArrayList<>();
 
                 for (int i = 0; i < room.getSetting().getWidth(); i++) {
@@ -97,16 +97,18 @@ public class ChoronaTerminal implements Runnable {
                     }
                 }
 
+
                 try {
                     textFileNew.writeAllLines(liste);
-                    JOptionPane.showMessageDialog(frame,
-                            "Successful created file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
-                } catch (IOErrorInFile ex) {
+                } catch (IOException ex) {
                     JOptionPane.showMessageDialog(frame,
                             "Error creating file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt",
                             "Insane error",
                             JOptionPane.ERROR_MESSAGE);
                 }
+                JOptionPane.showMessageDialog(frame,
+                        "Successful created file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
+
             }
         };
 

@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.unsereKlausur.exam;
 
-import de.dhbwka.java.exams.unsereKlausur.ownclasses.TextFile;
+import exam.ownclasses.TextFile;
 
 import java.io.IOException;
 import java.util.ArrayList;

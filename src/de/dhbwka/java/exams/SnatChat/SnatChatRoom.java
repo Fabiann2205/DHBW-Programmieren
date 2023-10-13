@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.SnatChat;
 
-import de.ownclasses.TextFileNew;
+import exam.ownclasses.TextFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,12 @@ public class SnatChatRoom {
     private String name;
     private List<SnatChatFrontend> registeredDevices;
 
-    private TextFileNew file;
+    private TextFile file;
 
     public SnatChatRoom(String name) {
         this.name = name;
         registeredDevices = new ArrayList<>(); // WICHTIG: INITIALISIEREN
-        this.file = new TextFileNew("resources/" + this.name + ".txt");
+        this.file = new TextFile("resources/" + this.name + ".txt");
     }
 
     public String getRoomName() {

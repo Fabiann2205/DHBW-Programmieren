@@ -1,10 +1,10 @@
 package de.dhbwka.java.exams.CHORonaProbe;
 
-import de.ownclasses.TextFileNew;
-import de.ownclasses.exceptions.IOErrorInFile;
+import exam.ownclasses.TextFile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.*;
 import java.util.Map.Entry;
@@ -46,11 +46,11 @@ public class Chorona {
         Chorona.parsePolluteFactor("ALPHA,100", map);
         Chorona.parsePolluteFactor("BETA,150", map);*/
 
-        TextFileNew file = new TextFileNew("resources/pollutantfactors.txt");
+        TextFile file = new TextFile("resources/pollutantfactors.txt");
         List<String> datei;
         try {
             datei = file.getAllLines();
-        } catch (IOErrorInFile e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 

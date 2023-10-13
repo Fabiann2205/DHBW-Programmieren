@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.FasidWorldCup;
 
-import de.dhbwka.java.exams.dartsV2.ownclasses.TextFile;
+import exam.ownclasses.TextFile;
 
 import javax.swing.*;
 import java.awt.*;

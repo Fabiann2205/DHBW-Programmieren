@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.dartsV2;
 
-import de.dhbwka.java.exams.dartsV2.ownclasses.TextFile;
+import exam.ownclasses.TextFile;
 
 import java.io.IOException;
 import java.util.ArrayList;

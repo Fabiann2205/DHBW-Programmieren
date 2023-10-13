@@ -1,6 +1,6 @@
 package de.dhbwka.java.exams.darts;
 
-import de.ownclasses.TextFile;
+import exam.ownclasses.TextFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,8 +88,7 @@ public class Game {
             player--;
         }
         text.addLine(players[player].getName() + " won with " + players[player].getCountDartsThrown() + " darts.");
-        text.write();
-        text.close();
+        
     }
 
     public static void main(String[] args) {
