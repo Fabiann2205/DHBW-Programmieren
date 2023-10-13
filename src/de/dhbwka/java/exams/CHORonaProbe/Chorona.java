@@ -27,8 +27,7 @@ public class Chorona {
             for (Entry<Variant, Double> e : pollutants.entrySet()) {
                 new ChoronaTerminal(e.getKey(), new Room(e.getValue(), setting));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 
@@ -79,7 +78,7 @@ public class Chorona {
         }
     }
 
-    public static Color getColorForDose(double dose) {
+    /*public static Color getColorForDose(double dose) {
         final int limit1 = 200;
         final int limit2 = 500;
         int val = Math.max(0, 255 - (int) (255 * (dose / limit1)));
@@ -90,7 +89,7 @@ public class Chorona {
             return Color.GREEN; // new Color( 216, 216, 216 );
         }
         return new Color(160, 32, 240);
-    }
+    }*/
 
     public static void updateButtonForDose(JButton btn, double dose) {
         final int limit1 = 200;

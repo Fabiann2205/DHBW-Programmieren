@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SnatChatRoom {
-    private String name;
-    private List<SnatChatFrontend> registeredDevices;
+    private final String name;
+    private final List<SnatChatFrontend> registeredDevices;
 
-    private TextFile file;
+    private final TextFile file;
 
     public SnatChatRoom(String name) {
         this.name = name;
@@ -25,10 +25,10 @@ public class SnatChatRoom {
         this.registeredDevices.add(s);
     }
 
-    public void unregister(SnatChatFrontend s) {
-        this.registeredDevices.remove(s);
-
-    }
+//    public void unregister(SnatChatFrontend s) {
+//        this.registeredDevices.remove(s);
+//
+//    }
 
     public void sendMessage(Message msg) {
         for (SnatChatFrontend x : this.registeredDevices) { // siehe SnatChatFrontend Interface...

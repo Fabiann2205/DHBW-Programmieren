@@ -7,10 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class QuestionnaireTerm {
-    private JTextArea textArea;
-    private JButton saveButton;
-    private JFrame frame;
-    private Thread thread;
+    private final JTextArea textArea;
+    private final JFrame frame;
 
     public QuestionnaireTerm() {
         // put these objects in a class scope if there are problems
@@ -20,7 +18,7 @@ public class QuestionnaireTerm {
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
-        saveButton = new JButton("Save");
+        JButton saveButton = new JButton("Save");
         ActionListener actionListener = e -> {
             System.out.println("Save Button was pressed!");
             JButton buttons = (JButton) e.getSource();
@@ -54,22 +52,19 @@ public class QuestionnaireTerm {
 
     public void setQuestionnaire(String text) {
         textArea.setText(text);
-        Runnable countdown = new Runnable() {
-            @Override
-            public void run() {
-                int start = 10;
-                for (int i = start; i > 0; i--) {
-                    frame.setTitle("Questionnaire" + " [" + i + "]");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
+        Runnable countdown = () -> {
+            int start = 10;
+            for (int i = start; i > 0; i--) {
+                frame.setTitle("Questionnaire" + " [" + i + "]");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
                 }
-                frame.setTitle("Questionnaire");
-                textArea.setText("");
             }
+            frame.setTitle("Questionnaire");
+            textArea.setText("");
         };
-        thread = new Thread(countdown);
+        Thread thread = new Thread(countdown);
         thread.start();
     }
 }

@@ -4,23 +4,21 @@ import exam.ownclasses.TextFile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChoronaTerminal implements Runnable {
-    private Variant variant;
-    private Room room;
+    private final Room room;
     private Thread thread;
-    private JLabel stepsLabel;
-    private List<CellButton> cellButtons;
-    private JButton stepButton, playButton, saveButton;
-    private JPanel centerPane;
+    private final JLabel stepsLabel;
+    private final List<CellButton> cellButtons;
+    private final JButton stepButton;
+    private final JButton playButton;
+    private final JButton saveButton;
 
     public ChoronaTerminal(Variant variant, Room room) {
-        this.variant = variant;
         this.room = room;
         ChoronaTerminal that = this;
 
@@ -28,7 +26,7 @@ public class ChoronaTerminal implements Runnable {
         JFrame frame = new JFrame();
         JPanel topPane = new JPanel();
         topPane.setBorder(BorderFactory.createEmptyBorder(200, 20, 20, 10));
-        centerPane = new JPanel();
+        JPanel centerPane = new JPanel();
         centerPane.setLayout(new GridLayout(this.room.getSetting().getHeight(), this.room.getSetting().getWidth()));
         JPanel bottomPane = new JPanel();
         frame.setLayout(new BorderLayout());
@@ -63,53 +61,42 @@ public class ChoronaTerminal implements Runnable {
 
         // bottom of UI
         stepButton = new JButton("Step");
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                stepAction();
-            }
-        };
+        ActionListener actionListener = e -> stepAction();
 
         stepButton.addActionListener(actionListener);
 
         playButton = new JButton("Play");
-        ActionListener actionListenerPlay = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playButton.setEnabled(false);
-                thread = new Thread(that);
-                thread.start();
-            }
+        ActionListener actionListenerPlay = e -> {
+            playButton.setEnabled(false);
+            thread = new Thread(that);
+            thread.start();
         };
 
         playButton.addActionListener(actionListenerPlay);
 
         saveButton = new JButton("Save");
-        ActionListener saveActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TextFile textFileNew = new TextFile("resources/CHORona/" + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
-                List<String> liste = new ArrayList<>();
+        ActionListener saveActionListener = e -> {
+            TextFile textFileNew = new TextFile("resources/CHORona/" + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
+            List<String> liste = new ArrayList<>();
 
-                for (int i = 0; i < room.getSetting().getWidth(); i++) {
-                    for (int j = 0; j < room.getSetting().getHeight(); j++) {
-                        liste.add(j + "; " + i + "; " + room.getDose(i, j));
-                    }
+            for (int i = 0; i < room.getSetting().getWidth(); i++) {
+                for (int j = 0; j < room.getSetting().getHeight(); j++) {
+                    liste.add(j + "; " + i + "; " + room.getDose(i, j));
                 }
-
-
-                try {
-                    textFileNew.writeAllLines(liste);
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(frame,
-                            "Error creating file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt",
-                            "Insane error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                JOptionPane.showMessageDialog(frame,
-                        "Successful created file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
-
             }
+
+
+            try {
+                textFileNew.writeAllLines(liste);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(frame,
+                        "Error creating file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt",
+                        "Insane error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            JOptionPane.showMessageDialog(frame,
+                    "Successful created file " + variant.getLabel() + "-" + room.getSetting().getWidth() + "-" + room.getSetting().getHeight() + "-" + room.getSetting().getPolluters().length + "-" + room.getSteps() + ".txt");
+
         };
 
         saveButton.addActionListener(saveActionListener);
@@ -123,7 +110,7 @@ public class ChoronaTerminal implements Runnable {
         frame.add(topPane, BorderLayout.PAGE_START);
         frame.add(centerPane, BorderLayout.CENTER);
         frame.add(bottomPane, BorderLayout.PAGE_END);
-        frame.setTitle("Chorona - " + this.variant.getLabel() + " (" + this.variant.getDesignation() + ")");
+        frame.setTitle("Chorona - " + variant.getLabel() + " (" + variant.getDesignation() + ")");
         frame.setSize(1000, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

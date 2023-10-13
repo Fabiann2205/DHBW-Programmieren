@@ -11,20 +11,18 @@ import java.util.Random;
 
 public class FasidTerm implements CorruptionPrevention {
 
-    private List<Match> matches = new ArrayList<>();
-    private TextFile file = new TextFile("resources/fasid.txt");
-    private List<Player> players = new ArrayList<>();
-    private List<JButton> jbuttonsPlayers = new ArrayList<>();
-    private JTextArea area;
-    private FasidAlarmLabel alarmLabel;
-    private List<BettingTerm> terms = new ArrayList<>();
+    private final List<Match> matches;
+    private final TextFile file = new TextFile("resources/fasid.txt");
+    private final JTextArea area;
+    private final FasidAlarmLabel alarmLabel;
+    private final List<BettingTerm> terms = new ArrayList<>();
 
     public FasidTerm(List<Match> matches, Player[] players) throws FasidException {
         if (matches.isEmpty() || players.length == 0) {
             throw new FasidException("Keine Spieler oder matches gegeben!");
         }
         this.matches = matches;
-        this.players = List.of(players);
+        List<Player> players1 = List.of(players);
 
 
         // put these objects in a class scope if there are problems
@@ -33,10 +31,10 @@ public class FasidTerm implements CorruptionPrevention {
         JPanel centerPane = new JPanel();
         JPanel bottomPane = new JPanel();
 
-        topPane.setLayout(new GridLayout(this.players.size(), 1));
+        topPane.setLayout(new GridLayout(players1.size(), 1));
 
 
-        for (Player p : this.players) {
+        for (Player p : players1) {
             JButton button = new JButton("Start betting, player " + p.getName() + "!");
             ActionListener actionListener = e -> {
                 System.out.println("Button was pressed!");
@@ -49,6 +47,7 @@ public class FasidTerm implements CorruptionPrevention {
                 buttons.setEnabled(false);
             };
             button.addActionListener(actionListener);
+            List<JButton> jbuttonsPlayers = new ArrayList<>();
             jbuttonsPlayers.add(button);
             topPane.add(button);
         }
@@ -84,24 +83,21 @@ public class FasidTerm implements CorruptionPrevention {
 
     // add bet!
     public void reportBet(Player player, Match match) {
-        this.area.append("\n Player" + player.getName() + " bets " + match.getResultType().toString() + " on match " + match.toString()); // add bet!
+        this.area.append("\n Player" + player.getName() + " bets " + match.getResultType().toString() + " on match " + match); // add bet!
         if (match.getResultType() == ResultType.FASID) {
             Random random = new Random();
             if (random.nextInt(1, 11) <= 3) {
                 this.alarmLabel.setFasidAlarm(player.getName());
             }
         }
-        file.addLine(player.getName() + " bets " + match.getResultType().toString() + " on match " + match.toString());
+        file.addLine(player.getName() + " bets " + match.getResultType().toString() + " on match " + match);
 
-        Runnable stop = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException ignored) {
-                }
-                hideFasidAlarm();
+        Runnable stop = () -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ignored) {
             }
+            hideFasidAlarm();
         };
         new Thread(stop).start();
     }

@@ -33,7 +33,6 @@ public class Game {
                     + " points remaining.");
             System.out.print("Enter visit: ");
             eingabe = input.nextLine();
-            vorher = new String[3];
             vorher = eingabe.split(" ");
             points = 0;
             getroffene = new ArrayList<>();
@@ -88,7 +87,7 @@ public class Game {
             player--;
         }
         text.addLine(players[player].getName() + " won with " + players[player].getCountDartsThrown() + " darts.");
-        
+
     }
 
     public static void main(String[] args) {

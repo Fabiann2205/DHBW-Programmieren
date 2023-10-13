@@ -12,7 +12,7 @@ public class FasidWorldCup {
 
 
     public static void main(String[] args) {
-        List<Match> matches = FasidWorldCup.loadMatches("fasid-matches.csv");
+        List<Match> matches = FasidWorldCup.loadMatches();
 
         Player[] players = new Player[]{
                 new Player("Franz"),
@@ -25,7 +25,7 @@ public class FasidWorldCup {
         }
     }
 
-    private static List<Match> loadMatches(String filename) {
+    private static List<Match> loadMatches() {
         List<Match> matches = new LinkedList<>();
         TextFile file = new TextFile("resources/fasid-matches.csv");
         List<String> textDatei = new ArrayList<>();

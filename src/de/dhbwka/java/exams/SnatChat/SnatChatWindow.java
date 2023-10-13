@@ -8,18 +8,15 @@ import java.awt.event.ActionListener;
 
 public class SnatChatWindow extends JFrame implements SnatChatFrontend {
 
-    private SnatChatRoom snatChatRoom;
-    private Account account;
+    private final Account account;
 
-    private ChatMessagesComponent msgComp;
-    private TextFile file;
+    private final ChatMessagesComponent msgComp;
 
 
     public SnatChatWindow(SnatChatRoom snatChatRoom, Account account) {
-        this.snatChatRoom = snatChatRoom;
         this.account = account;
         this.msgComp = new ChatMessagesComponent();
-        this.file = new TextFile("resources/" + this.snatChatRoom.getRoomName() + ".txt");
+        TextFile file = new TextFile("resources/" + snatChatRoom.getRoomName() + ".txt");
         try {
             for (int i = 0; ((i + file.availableLines() - 10) < file.availableLines() && file.availableLines() > 9) || (file.availableLines() < 10 && i < 10); i++) {
                 JLabel lbl;
@@ -94,20 +91,17 @@ public class SnatChatWindow extends JFrame implements SnatChatFrontend {
         JLabel lbl = new JLabel(msg.getFrom().getName() + ": " + msg.getText());
         lbl.setForeground(Color.GRAY);
         this.msgComp.add(lbl);
-        Runnable countdown = new Runnable() {
-            @Override
-            public void run() {
-                int start = 30;
-                String origText = lbl.getText();
-                for (int i = start; i > 0; i--) {
-                    lbl.setText(origText + " [" + i + "]");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
+        Runnable countdown = () -> {
+            int start = 30;
+            String origText = lbl.getText();
+            for (int i = start; i > 0; i--) {
+                lbl.setText(origText + " [" + i + "]");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
                 }
-                msgComp.remove(lbl);
             }
+            msgComp.remove(lbl);
         };
 
         new Thread(countdown).start();
@@ -119,20 +113,17 @@ public class SnatChatWindow extends JFrame implements SnatChatFrontend {
         JLabel lbl = new JLabel(text);
         lbl.setForeground(Color.GRAY);
         this.msgComp.add(lbl);
-        Runnable countdown = new Runnable() {
-            @Override
-            public void run() {
-                int start = 30;
-                String origText = lbl.getText();
-                for (int i = start; i > 0; i--) {
-                    lbl.setText(origText + " [" + i + "]");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
+        Runnable countdown = () -> {
+            int start = 30;
+            String origText = lbl.getText();
+            for (int i = start; i > 0; i--) {
+                lbl.setText(origText + " [" + i + "]");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
                 }
-                msgComp.remove(lbl);
             }
+            msgComp.remove(lbl);
         };
 
         new Thread(countdown).start();

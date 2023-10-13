@@ -38,10 +38,10 @@ public class Evasionator {
                 "Welche Konsequenzen könnte Ihr Handeln für Sie haben?;false;GENERAL",
                 "Gibt es weitere Themen neben {{TOPIC}}, die für diesen Fall relevant sind?;false;GENERAL",
                 "Wie tief sind sie selbst in die Sache verstrickt?;false;GENERAL",
-                "Gibt es Mitt\u00e4ter? Nennen Sie Namen!;false;YES_NO",
+                "Gibt es Mittäter? Nennen Sie Namen!;false;YES_NO",
                 "Was könnte Sie entlasten?;false;GENERAL",
-                "Welche Personen können noch davon geh\u00f6rt haben?;false;WITNESS",
-                "Welche mildernden Umst\u00e4nde können Sie geltend machen?;false;GENERAL",
+                "Welche Personen können noch davon gehört haben?;false;WITNESS",
+                "Welche mildernden Umstände können Sie geltend machen?;false;GENERAL",
                 "Warum ist der Verdacht wohl auf Sie gefallen?;false;GENERAL"
         };
         for (String dummy : dummies) {
@@ -77,7 +77,7 @@ public class Evasionator {
                 "Beim Thema {{TOPIC}} bin ich blank.;GENERAL",
                 "Das ist ein überraschender Umstand, den ich erst noch verarbeiten muss.;GENERAL",
                 "Das ist eine heikle Frage, die ich nicht einfach so beantworten kann.;GENERAL",
-                "Das ist eine peinliche Geschichte, die ich lieber ein anderes Mal erz\u00e4hle.;GENERAL",
+                "Das ist eine peinliche Geschichte, die ich lieber ein anderes Mal erzähle.;GENERAL",
                 "Das ist eine persönliche Angelegenheit, die ich lieber für mich behalte.;GENERAL",
                 "Das ist eine unerwartete Frage, die ich noch nicht in Betracht gezogen habe.;GENERAL",
                 "Daran kann ich mich nicht erinnern.;GENERAL,WITNESS",
@@ -123,7 +123,6 @@ public class Evasionator {
             return new Question(parts[0], Boolean.parseBoolean(parts[1]), QuestionType.valueOf(parts[2]));
         } catch (Exception e) {
             System.err.println("Error parsing question line: " + line);
-            e.printStackTrace();
         }
         return null;
     }
@@ -146,7 +145,6 @@ public class Evasionator {
             return new Evasion(parts[0], types);
         } catch (Exception e) {
             System.err.println("Error parsing evasion line: " + line);
-            e.printStackTrace();
         }
         return null;
     }

@@ -8,21 +8,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    private Board board;
-    private List<Player> players;
+    private final Board board;
+    private final List<Player> players;
 
     public Game(Board board, List<Player> players) {
         this.board = board;
         this.players = players;
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
 
     public void start() {
         String currentValue;
@@ -71,7 +64,6 @@ public class Game {
             for (Player p : players) {
                 if (p.getRemainingPoints() == 0) {
                     running = false;
-                    reason = false;
                     playerWin = p;
                 }
             }
